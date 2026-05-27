@@ -1,0 +1,1703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contact Softoware — Let's start a conversation about your next custom web, e-commerce, or marketing project." />
+  <title>Contact Us | Softoware</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- CDNs: GSAP, ScrollTrigger, Lenis (Smooth Scroll) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* =========================================================
+       RESET & BASE DESIGN SYSTEM
+    ========================================================= */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg-white: #FFFFFF;
+      --bg-light: #F8FAFC;
+      --text-dark: #0F172A;
+      --text-muted: #64748B;
+      --text-light: #94A3B8;
+      --accent: #2563EB;
+      --accent-hover: #1D4ED8;
+      --accent-light: #BFDBFE;
+      --accent-xlight: #EFF6FF;
+      --border: #E2E8F0;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 24px;
+      --radius-xl: 32px;
+      --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
+      --shadow-md: 0 10px 30px rgba(15, 23, 42, 0.06);
+      --shadow-lg: 0 20px 50px rgba(37, 99, 235, 0.08);
+      --shadow-xl: 0 30px 80px rgba(37, 99, 235, 0.12);
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --font-head: 'Outfit', sans-serif;
+      --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    html.lenis {
+      height: auto;
+    }
+    .lenis.lenis-smooth {
+      scroll-behavior: auto !important;
+    }
+    .lenis.lenis-stopped {
+      overflow: hidden;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-white);
+      color: var(--text-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition);
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+      border-radius: var(--radius-md);
+    }
+
+    /* =========================================================
+       UTILITIES & MODERN STYLING
+    ========================================================= */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-xlight);
+      border: 1px solid var(--accent-light);
+      border-radius: 100px;
+      padding: 6px 16px;
+      margin-bottom: 20px;
+      font-family: var(--font-head);
+    }
+
+    .section-label-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: inline-block;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.7); }
+    }
+
+    .section-heading {
+      font-family: var(--font-head);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text-dark);
+      line-height: 1.15;
+    }
+
+    .section-heading span.gradient-text {
+      background: linear-gradient(135deg, var(--accent) 0%, #4F46E5 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .section-subtext {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+      max-width: 580px;
+      margin-top: 16px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 700;
+      border-radius: 100px;
+      padding: 14px 32px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: var(--transition);
+      white-space: nowrap;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.15);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: -1;
+    }
+
+    .btn:hover::before {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .btn:active {
+      transform: scale(0.96);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent) 0%, #3B82F6 100%);
+      color: #fff;
+      box-shadow: 0 8px 30px rgba(37, 99, 235, 0.25);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 12px 40px rgba(37, 99, 235, 0.35);
+      transform: translateY(-2px);
+    }
+
+    /* =========================================================
+       NAVBAR (GLASSMORPHIC)
+    ========================================================= */
+    #navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(255, 255, 255, 0.8);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+      transition: var(--transition);
+    }
+
+    #navbar.scrolled {
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+      border-bottom-color: rgba(226, 232, 240, 0.8);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-head);
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--accent) 0%, #4F46E5 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.25rem;
+      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+    }
+
+    .logo-text {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      letter-spacing: -0.03em;
+    }
+
+    .logo-text span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-links a {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      padding: 8px 18px;
+      border-radius: 8px;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--text-dark);
+      background: var(--bg-light);
+    }
+
+    .nav-links a.active {
+      color: var(--accent);
+      background: var(--accent-xlight);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .nav-cta {
+      font-size: 0.88rem;
+      padding: 10px 24px;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 44px;
+      height: 44px;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      border-radius: 10px;
+      gap: 6px;
+      transition: var(--transition);
+      z-index: 1100;
+    }
+
+    .hamburger:hover {
+      background: var(--bg-light);
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text-dark);
+      border-radius: 2px;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s, width 0.3s;
+    }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    /* Mobile Menu */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .mobile-menu.open {
+      display: flex;
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .mobile-menu a {
+      font-family: var(--font-head);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      padding: 12px 36px;
+      border-radius: 14px;
+      transition: var(--transition);
+      letter-spacing: -0.02em;
+    }
+
+    .mobile-menu a:hover, .mobile-menu a.active {
+      color: var(--accent);
+      background: var(--accent-xlight);
+      transform: scale(1.05);
+    }
+
+    /* =========================================================
+       PAGE HERO (3D VECTOR FLOW FIELD CANVAS)
+    ========================================================= */
+    .page-hero {
+      position: relative;
+      background: var(--bg-light);
+      padding: 180px 24px 100px;
+      text-align: center;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-canvas-container {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      opacity: 0.9;
+    }
+
+    #flow-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .page-hero h1 {
+      font-family: var(--font-head);
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--text-dark);
+      margin-bottom: 20px;
+    }
+
+    .page-hero h1 span.gradient {
+      background: linear-gradient(135deg, var(--accent) 0%, #4F46E5 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .page-hero p {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* =========================================================
+       CONTACT FORM SPLIT VIEW
+    ========================================================= */
+    .contact-section {
+      background: var(--bg-white);
+      padding: 120px 24px;
+    }
+
+    .contact-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contact-info {
+      max-width: 480px;
+    }
+
+    .contact-info h2 {
+      font-family: var(--font-head);
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 24px;
+      letter-spacing: -0.02em;
+    }
+
+    .contact-info p {
+      font-size: 1.02rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 40px;
+    }
+
+    .info-list {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      margin-bottom: 48px;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .info-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--accent-xlight);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .info-icon svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .info-content {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.4;
+    }
+
+    .info-lbl {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+    }
+
+    .info-val {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .info-val a:hover {
+      color: var(--accent);
+    }
+
+    /* Trust Panel Card */
+    .trust-card {
+      background: var(--bg-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 16px 16px 0;
+      padding: 24px;
+    }
+
+    .trust-card-title {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: var(--text-dark);
+      margin-bottom: 6px;
+    }
+
+    .trust-card-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Form Container */
+    .form-container {
+      perspective: 1000px;
+    }
+
+    .contact-form-card {
+      background: var(--bg-white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 48px;
+      box-shadow: var(--shadow-lg);
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+
+    .form-header {
+      margin-bottom: 32px;
+    }
+
+    .form-header h3 {
+      font-family: var(--font-head);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      letter-spacing: -0.02em;
+    }
+
+    /* Floating Labels Form */
+    .form-group {
+      position: relative;
+      margin-bottom: 24px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 16px;
+      font-size: 0.95rem;
+      font-family: var(--font-body);
+      color: var(--text-dark);
+      outline: none;
+      transition: var(--transition);
+      -webkit-appearance: none; /* remove default arrow */
+    }
+
+    /* Specific select padding */
+    .form-group select {
+      cursor: pointer;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      background: var(--bg-white);
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px var(--accent-xlight);
+    }
+
+    .form-group label {
+      position: absolute;
+      left: 16px;
+      top: 18px;
+      color: var(--text-muted);
+      pointer-events: none;
+      transition: 0.25s cubic-bezier(0.16, 1, 0.3, 1) all;
+      font-size: 0.92rem;
+      font-weight: 500;
+    }
+
+    /* Floating logic when input has value or focus */
+    .form-group input:focus ~ label,
+    .form-group input:not(:placeholder-shown) ~ label,
+    .form-group textarea:focus ~ label,
+    .form-group textarea:not(:placeholder-shown) ~ label {
+      top: -10px;
+      left: 10px;
+      background: var(--bg-white);
+      padding: 0 8px;
+      font-size: 0.78rem;
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* select logic */
+    .form-group.select-group label {
+      top: -10px;
+      left: 10px;
+      background: var(--bg-white);
+      padding: 0 8px;
+      font-size: 0.78rem;
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    /* Checkbox Group */
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .checkbox-group input {
+      width: 20px;
+      height: 20px;
+      border-radius: 6px;
+      border: 2px solid var(--border);
+      cursor: pointer;
+      accent-color: var(--accent);
+    }
+
+    .checkbox-group label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+
+    .btn-submit {
+      width: 100%;
+      justify-content: center;
+      font-size: 1.05rem;
+      padding: 16px 32px;
+      border-radius: 12px;
+      will-change: transform;
+    }
+
+    .btn-submit svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* Error Shake Animation */
+    .input-error {
+      border-color: #EF4444 !important;
+      background: #FEF2F2 !important;
+      box-shadow: 0 0 0 4px #FEE2E2 !important;
+      animation: shake 0.4s ease;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-6px); }
+      40%, 80% { transform: translateX(6px); }
+    }
+
+    /* Form Success State */
+    .success-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 40px 0;
+      animation: zoom-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes zoom-in {
+      from { transform: scale(0.92); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .success-circle {
+      width: 72px;
+      height: 72px;
+      background: #D1FAE5;
+      color: #059669;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      box-shadow: 0 10px 25px rgba(5, 150, 105, 0.15);
+    }
+
+    .success-circle svg {
+      width: 32px;
+      height: 32px;
+    }
+
+    .success-title {
+      font-family: var(--font-head);
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+    }
+
+    .success-desc {
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      max-width: 320px;
+      line-height: 1.6;
+    }
+
+    /* =========================================================
+       MAP PLACEHOLDER
+    ========================================================= */
+    .map-section {
+      background: var(--bg-light);
+      padding: 100px 24px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .map-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .map-container h2 {
+      font-family: var(--font-head);
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    .map-box {
+      width: 100%;
+      height: 360px;
+      background: linear-gradient(135deg, var(--accent-xlight) 0%, var(--accent-light) 100%);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .map-box::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(37, 99, 235, 0.08) 1.5px, transparent 1.5px);
+      background-size: 24px 24px;
+    }
+
+    .map-marker {
+      background: var(--accent);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 50px;
+      font-family: var(--font-head);
+      font-weight: 800;
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 2;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* =========================================================
+       FAQ SECTION (GSAP SLIDING HEIGHT ACCORDION)
+    ========================================================= */
+    .faq-section {
+      background: var(--bg-white);
+      padding: 120px 24px;
+    }
+
+    .faq-header {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .faq-list {
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .faq-item {
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--bg-white);
+      overflow: hidden;
+      transition: border-color 0.3s ease;
+    }
+
+    .faq-item.active {
+      border-color: var(--accent-light);
+    }
+
+    .faq-trigger {
+      width: 100%;
+      padding: 24px 32px;
+      background: transparent;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-align: left;
+    }
+
+    .faq-question {
+      font-family: var(--font-head);
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      padding-right: 20px;
+    }
+
+    .faq-chevron {
+      color: var(--text-muted);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      flex-shrink: 0;
+    }
+
+    .faq-item.active .faq-chevron {
+      transform: rotate(180deg);
+      color: var(--accent);
+    }
+
+    .faq-content {
+      height: 0; /* Animated dynamically by GSAP */
+      overflow: hidden;
+      will-change: height;
+    }
+
+    .faq-answer {
+      padding: 0 32px 28px;
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+    #footer {
+      background: #0B1120;
+      color: #94A3B8;
+      padding: 100px 0 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 60px;
+      padding-bottom: 60px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .footer-brand {
+      max-width: 320px;
+    }
+
+    .footer-brand p {
+      font-size: 0.95rem;
+      line-height: 1.75;
+      margin-top: 16px;
+      color: #64748B;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #94A3B8;
+      transition: var(--transition);
+    }
+
+    .social-link:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+      transform: translateY(-3px);
+    }
+
+    .social-link svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-head);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #fff;
+      margin-bottom: 24px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .footer-col ul li a {
+      font-size: 0.95rem;
+      color: #94A3B8;
+    }
+
+    .footer-col ul li a:hover {
+      color: #fff;
+      padding-left: 4px;
+    }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 40px;
+      font-size: 0.85rem;
+      color: #64748B;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-bottom-links a:hover {
+      color: #fff;
+    }
+
+    /* =========================================================
+       RESPONSIVE DESIGN & MOBILE OPTIMIZATION
+    ========================================================= */
+    @media (max-width: 1024px) {
+      .contact-inner {
+        grid-template-columns: 1fr;
+        gap: 60px;
+      }
+      .contact-info {
+        max-width: 100%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .info-list {
+        align-items: center;
+      }
+      .footer-top {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+      .footer-top {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page-hero {
+        padding: 140px 20px 80px;
+      }
+      .contact-form-card {
+        padding: 28px 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ==========================================
+       HEADER / NAVIGATION
+  =========================================== -->
+  <header id="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-icon">S</div>
+        <span class="logo-text">Softoware<span>.</span></span>
+      </a>
+
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="index.html">Home</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="active">Contact</a>
+      </nav>
+
+      <div class="nav-right">
+        <a href="contact.html" class="btn btn-primary nav-cta">Start a Project</a>
+        <button class="hamburger" id="hamburger-btn" aria-label="Toggle Menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <nav class="mobile-menu" id="mobile-menu-overlay" aria-label="Mobile Navigation">
+      <a href="index.html">Home</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="active">Contact</a>
+      <a href="contact.html" class="btn btn-primary nav-cta" style="margin-top: 20px;">Start a Project</a>
+    </nav>
+  </header>
+
+  <!-- ==========================================
+       PAGE HERO (3D VECTOR FLOW FIELD)
+  =========================================== -->
+  <section class="page-hero">
+    <div class="hero-canvas-container">
+      <canvas id="flow-canvas"></canvas>
+    </div>
+    <div class="hero-content">
+      <div class="section-label">
+        <span class="section-label-dot"></span>
+        Get In Touch
+      </div>
+      <h1>Let's Build Something <span class="gradient">Extraordinary.</span></h1>
+      <p>Consult with our development team. We will review your system specifications and return an project blueprint within 24 hours.</p>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       CONTACT FORM SPLIT SECTION
+  =========================================== -->
+  <section class="contact-section">
+    <div class="container contact-inner">
+      
+      <!-- Left side info -->
+      <div class="contact-info">
+        <h2>Let's Start a Conversation</h2>
+        <p>Whether you're a startup looking to deploy a new SaaS interface or an established enterprise seeking to optimize customer acquisition funnels, we're ready to execute.</p>
+        
+        <div class="info-list">
+          <div class="info-item">
+            <div class="info-icon"><i data-lucide="mail"></i></div>
+            <div class="info-content">
+              <span class="info-lbl">Architect Line</span>
+              <span class="info-val"><a href="mailto:hello@softoware.com">hello@softoware.com</a></span>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon"><i data-lucide="phone"></i></div>
+            <div class="info-content">
+              <span class="info-lbl">Direct Phone</span>
+              <span class="info-val"><a href="tel:+14155550182">+1 (415) 555-0182</a></span>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon"><i data-lucide="map-pin"></i></div>
+            <div class="info-content">
+              <span class="info-lbl">HQ Location</span>
+              <span class="info-val">100 Pine Street, San Francisco, CA</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="trust-card">
+          <h4 class="trust-card-title">⚡ Guaranteed Response</h4>
+          <p class="trust-card-desc">An engineering coordinator will reply to your scope document within 24 hours with budget estimates and milestones.</p>
+        </div>
+      </div>
+
+      <!-- Right side form -->
+      <div class="form-container">
+        <div class="contact-form-card card-3d" id="form-card">
+          <div class="form-header">
+            <h3>Submit Scope Questionnaire</h3>
+          </div>
+
+          <form id="project-form" novalidate>
+            <div class="form-group">
+              <input type="text" id="name" placeholder=" " required />
+              <label for="name">Full Name</label>
+            </div>
+
+            <div class="form-group">
+              <input type="email" id="email" placeholder=" " required />
+              <label for="email">Email Address</label>
+            </div>
+
+            <div class="form-group">
+              <input type="text" id="company" placeholder=" " />
+              <label for="company">Company / Website (Optional)</label>
+            </div>
+
+            <div class="form-group select-group">
+              <select id="service" required>
+                <option value="" disabled selected>Select Service Required</option>
+                <option value="web-dev">Custom Web Development</option>
+                <option value="ecommerce">E-Commerce &amp; CMS</option>
+                <option value="marketing">Acquisition Marketing</option>
+                <option value="design">UI/UX Design</option>
+                <option value="other">Other Scope</option>
+              </select>
+              <label for="service">Capability</label>
+            </div>
+
+            <div class="form-group select-group">
+              <select id="budget" required>
+                <option value="" disabled selected>Budget Parameters</option>
+                <option value="under-5k">Under $5,000</option>
+                <option value="5k-15k">$5,000 – $15,000</option>
+                <option value="15k-50k">$15,000 – $50,000</option>
+                <option value="50k-plus">$50,000+</option>
+              </select>
+              <label for="budget">Budget Scope</label>
+            </div>
+
+            <div class="form-group">
+              <textarea id="message" placeholder=" " required></textarea>
+              <label for="message">Project Description &amp; Specifications</label>
+            </div>
+
+            <div class="checkbox-group">
+              <input type="checkbox" id="terms" required />
+              <label for="terms">I agree to the Privacy Policy &amp; Terms of Service</label>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-submit btn-magnetic" id="submit-btn">
+              Send Scope Inquiry <i data-lucide="send" style="margin-left: 6px;"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       MAP / LOCATION
+  =========================================== -->
+  <section class="map-section">
+    <div class="container map-container">
+      <h2>Visit Our Studio</h2>
+      <div class="map-box">
+        <div class="map-marker">
+          <i data-lucide="map-pin"></i> Softoware HQ, San Francisco
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       FAQ SECTION (GSAP SLIDING HEIGHT)
+  =========================================== -->
+  <section class="faq-section">
+    <div class="container">
+      <div class="faq-header">
+        <div class="section-label">
+          <span class="section-label-dot"></span>
+          FAQ
+        </div>
+        <h2>Frequently Asked Questions</h2>
+      </div>
+
+      <div class="faq-list">
+        
+        <!-- Q1 -->
+        <div class="faq-item">
+          <button class="faq-trigger">
+            <span class="faq-question">How long does a typical web project take?</span>
+            <span class="faq-chevron"><i data-lucide="chevron-down"></i></span>
+          </button>
+          <div class="faq-content">
+            <div class="faq-answer">
+              Most core products are engineered and launched within 4–12 weeks. We map exact sprint scopes and delivery roadmaps prior to starting.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="faq-item">
+          <button class="faq-trigger">
+            <span class="faq-question">Do you work with international clients?</span>
+            <span class="faq-chevron"><i data-lucide="chevron-down"></i></span>
+          </button>
+          <div class="faq-content">
+            <div class="faq-answer">
+              Yes, our teams operate remotely, servicing clients across North America, Europe, and Asia. All communication channels are async-friendly.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="faq-item">
+          <button class="faq-trigger">
+            <span class="faq-question">What is your payment structure?</span>
+            <span class="faq-chevron"><i data-lucide="chevron-down"></i></span>
+          </button>
+          <div class="faq-content">
+            <div class="faq-answer">
+              We generally utilize a 50% upfront and 50% on-completion milestone model for projects, or structured weekly/monthly retainers.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="faq-item">
+          <button class="faq-trigger">
+            <span class="faq-question">Do you support systems after launch?</span>
+            <span class="faq-chevron"><i data-lucide="chevron-down"></i></span>
+          </button>
+          <div class="faq-content">
+            <div class="faq-answer">
+              Yes, we include a 30-day post-launch support guarantee to fix any bugs, after which you can roll into a monthly technical/marketing retainer.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       FOOTER
+  =========================================== -->
+  <footer id="footer">
+    <div class="container footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">
+          <div class="logo-icon">S</div>
+          <span class="logo-text" style="color: #fff">Softoware<span>.</span></span>
+        </a>
+        <p>Consolidating world-class web engineering and performance customer acquisition under one team.</p>
+        <div class="social-links">
+          <a href="#" class="social-link"><i data-lucide="twitter"></i></a>
+          <a href="#" class="social-link"><i data-lucide="linkedin"></i></a>
+          <a href="#" class="social-link"><i data-lucide="github"></i></a>
+          <a href="#" class="social-link"><i data-lucide="dribbble"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Capabilities</h4>
+        <ul>
+          <li><a href="services.html">Web Development</a></li>
+          <li><a href="services.html">E-Commerce &amp; CMS</a></li>
+          <li><a href="services.html">Acquisition Marketing</a></li>
+          <li><a href="services.html">UI/UX Design</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Softoware</h4>
+        <ul>
+          <li><a href="about.html">About Our Agency</a></li>
+          <li><a href="portfolio.html">Featured Work</a></li>
+          <li><a href="contact.html">Careers</a></li>
+          <li><a href="contact.html">Book Call</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Get In Touch</h4>
+        <ul>
+          <li><a href="mailto:hello@softoware.com">hello@softoware.com</a></li>
+          <li><a href="tel:+14155550182">+1 (415) 555-0182</a></li>
+          <li><a href="#">San Francisco, CA</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>&copy; 2026 Softoware. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       JAVASCRIPT LOGIC
+  =========================================== -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // =========================================================
+    // LENIS SMOOTH SCROLL
+    // =========================================================
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smooth: true,
+      touchSmooth: false
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    // =========================================================
+    // MOBILE NAVIGATION
+    // =========================================================
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+
+    hamburgerBtn.addEventListener('click', () => {
+      const isOpen = hamburgerBtn.classList.toggle('open');
+      mobileMenuOverlay.classList.toggle('open', isOpen);
+      hamburgerBtn.setAttribute('aria-expanded', isOpen);
+      document.body.classList.toggle('menu-open', isOpen);
+    });
+
+    // =========================================================
+    // HEADER SCROLL STATE
+    // =========================================================
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // =========================================================
+    // HERO 3D FLOW FIELD (HTML5 CANVAS)
+    // =========================================================
+    const canvas = document.getElementById('flow-canvas');
+    const ctx = canvas.getContext('2d');
+
+    let width, height;
+    function resizeCanvas() {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      width = canvas.width = rect.width;
+      height = canvas.height = rect.height;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    // Generative flow particles
+    const particleCount = 140;
+    const particles = [];
+
+    for (let i = 0; i < particleCount; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: 0,
+        vy: 0,
+        size: 1 + Math.random() * 2,
+        alpha: 0.1 + Math.random() * 0.45,
+        speed: 0.3 + Math.random() * 0.7
+      });
+    }
+
+    let mouse = { x: -1000, y: -1000 };
+    window.addEventListener('mousemove', (e) => {
+      const rect = canvas.getBoundingClientRect();
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
+    });
+
+    function drawFlowField() {
+      ctx.clearRect(0, 0, width, height);
+
+      // Simple mathematical vector field
+      particles.forEach(p => {
+        // Vector grid direction: angle based on coordinate trigonometry
+        const angle = (p.x * 0.005) + (p.y * 0.005);
+        
+        // Base flow direction
+        p.vx += Math.cos(angle) * 0.05;
+        p.vy += Math.sin(angle) * 0.05;
+
+        // Cursor attraction vector
+        const dx = mouse.x - p.x;
+        const dy = mouse.y - p.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < 180) {
+          const force = (180 - dist) / 180;
+          p.vx += (dx / dist) * force * 0.2;
+          p.vy += (dy / dist) * force * 0.2;
+          p.size = 2.5;
+        } else {
+          p.size = Math.max(1, p.size - 0.05);
+        }
+
+        // Apply velocities
+        p.x += p.vx * p.speed;
+        p.y += p.vy * p.speed;
+
+        // Friction damping
+        p.vx *= 0.95;
+        p.vy *= 0.95;
+
+        // Screen boundary loops
+        if (p.x < 0) p.x = width;
+        if (p.x > width) p.x = 0;
+        if (p.y < 0) p.y = height;
+        if (p.y > height) p.y = 0;
+
+        // Draw particle flow point
+        ctx.fillStyle = `rgba(37, 99, 235, ${p.alpha})`;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      requestAnimationFrame(drawFlowField);
+    }
+    drawFlowField();
+
+    // =========================================================
+    // FORM VALIDATION & SHAKE + SUCCESS INTERACTION
+    // =========================================================
+    const form = document.getElementById('project-form');
+    const formCard = document.getElementById('form-card');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('name');
+      const email = document.getElementById('email');
+      const service = document.getElementById('service');
+      const budget = document.getElementById('budget');
+      const message = document.getElementById('message');
+      const terms = document.getElementById('terms');
+
+      let isValid = true;
+
+      const fields = [name, email, service, budget, message, terms];
+      fields.forEach(field => {
+        field.classList.remove('input-error');
+        
+        // Validation check
+        if (!field.value || (field.type === 'checkbox' && !field.checked)) {
+          field.classList.add('input-error');
+          isValid = false;
+        }
+      });
+
+      if (!isValid) return;
+
+      // Clean success sequence on valid form submission
+      gsap.to(form, {
+        opacity: 0,
+        y: -20,
+        duration: 0.4,
+        onComplete: () => {
+          // Replace form HTML with success screen
+          formCard.innerHTML = `
+            <div class="success-container">
+              <div class="success-circle">
+                <i data-lucide="check"></i>
+              </div>
+              <h3 class="success-title">Message Sent!</h3>
+              <p class="success-desc">Thank you for contacting Softoware. Our architectural team will review your specifications and follow up within 24 hours.</p>
+              <a href="index.html" class="btn btn-primary">Return Home</a>
+            </div>
+          `;
+          lucide.createIcons();
+        }
+      });
+    });
+
+    // Remove red borders immediately on input change
+    const inputs = form.querySelectorAll('input, select, textarea');
+    inputs.forEach(input => {
+      input.addEventListener('input', () => {
+        input.classList.remove('input-error');
+      });
+    });
+
+    // =========================================================
+    // GSAP SLIDING FAQ ACCORDION (SMOOTH HEIGHTS)
+    // =========================================================
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+      const trigger = item.querySelector('.faq-trigger');
+      const content = item.querySelector('.faq-content');
+
+      trigger.addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+        
+        // Close all other items first
+        faqItems.forEach(otherItem => {
+          if (otherItem !== item && otherItem.classList.contains('active')) {
+            otherItem.classList.remove('active');
+            gsap.to(otherItem.querySelector('.faq-content'), { height: 0, duration: 0.4, ease: 'power2.out' });
+          }
+        });
+
+        // Toggle current item
+        item.classList.toggle('active', !isActive);
+        
+        if (!isActive) {
+          // Slide open
+          gsap.to(content, { 
+            height: 'auto', 
+            duration: 0.45, 
+            ease: 'power2.out',
+            overwrite: 'auto'
+          });
+        } else {
+          // Slide closed
+          gsap.to(content, { 
+            height: 0, 
+            duration: 0.4, 
+            ease: 'power2.out',
+            overwrite: 'auto'
+          });
+        }
+      });
+    });
+
+    // =========================================================
+    // GSAP + SCROLLTRIGGER ANIMATIONS
+    // =========================================================
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Fade-in Hero
+    gsap.from('.hero-content > *', {
+      y: 40,
+      opacity: 0,
+      duration: 1,
+      stagger: 0.15,
+      ease: 'power3.out'
+    });
+
+    // Entrance animation for split screen
+    gsap.from('.contact-info > *', {
+      x: -40,
+      opacity: 0,
+      duration: 1,
+      stagger: 0.15,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '.contact-inner',
+        start: 'top 75%'
+      }
+    });
+
+    gsap.from('.form-container', {
+      x: 40,
+      opacity: 0,
+      duration: 1,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '.contact-inner',
+        start: 'top 75%'
+      }
+    });
+
+    // =========================================================
+    // INTERACTIVE 3D HOVER TILT & MAGNETIC EFFECTS
+    // =========================================================
+    if (window.matchMedia('(hover: hover)').matches) {
+      // 3D card tilt
+      const cards3d = document.querySelectorAll('.card-3d');
+      cards3d.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left - rect.width / 2;
+          const y = e.clientY - rect.top - rect.height / 2;
+          
+          const rotateX = -(y / (rect.height / 2)) * 6;
+          const rotateY = (x / (rect.width / 2)) * 6;
+          
+          gsap.to(card, {
+            rotateX: rotateX,
+            rotateY: rotateY,
+            scale: 1.01,
+            duration: 0.35,
+            ease: 'power2.out',
+            transformPerspective: 1000
+          });
+        });
+        
+        card.addEventListener('mouseleave', () => {
+          gsap.to(card, {
+            rotateX: 0,
+            rotateY: 0,
+            scale: 1,
+            duration: 0.6,
+            ease: 'power2.out'
+          });
+        });
+      });
+
+      // Magnetic Submit Button
+      const submitBtn = document.getElementById('submit-btn');
+      submitBtn.addEventListener('mousemove', (e) => {
+        const rect = submitBtn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        
+        gsap.to(submitBtn, {
+          x: x * 0.35,
+          y: y * 0.35,
+          duration: 0.3,
+          ease: 'power2.out'
+        });
+      });
+
+      submitBtn.addEventListener('mouseleave', () => {
+        gsap.to(submitBtn, {
+          x: 0,
+          y: 0,
+          duration: 0.5,
+          ease: 'elastic.out(1, 0.3)'
+        });
+      });
+    }
+  </script>
+</body>
+</html>

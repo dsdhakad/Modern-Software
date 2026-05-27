@@ -1,0 +1,1509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Softoware — Premium digital services including Custom Web Development, E-Commerce, Performance Marketing, UI/UX Design, SEO, and Cloud DevOps." />
+  <title>Services | Softoware</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- CDNs: GSAP, ScrollTrigger, Lenis (Smooth Scroll) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* =========================================================
+       RESET & BASE DESIGN SYSTEM
+    ========================================================= */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg-white: #FFFFFF;
+      --bg-light: #F8FAFC;
+      --text-dark: #0F172A;
+      --text-muted: #64748B;
+      --text-light: #94A3B8;
+      --accent: #2563EB;
+      --accent-hover: #1D4ED8;
+      --accent-light: #BFDBFE;
+      --accent-xlight: #EFF6FF;
+      --border: #E2E8F0;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 24px;
+      --radius-xl: 32px;
+      --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
+      --shadow-md: 0 10px 30px rgba(15, 23, 42, 0.06);
+      --shadow-lg: 0 20px 50px rgba(37, 99, 235, 0.08);
+      --shadow-xl: 0 30px 80px rgba(37, 99, 235, 0.12);
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --font-head: 'Outfit', sans-serif;
+      --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    html.lenis {
+      height: auto;
+    }
+    .lenis.lenis-smooth {
+      scroll-behavior: auto !important;
+    }
+    .lenis.lenis-stopped {
+      overflow: hidden;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-white);
+      color: var(--text-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition);
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+      border-radius: var(--radius-md);
+    }
+
+    /* =========================================================
+       UTILITIES & MODERN STYLING
+    ========================================================= */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .glow-grid {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, #CBD5E1 1px, transparent 1px);
+      background-size: 32px 32px;
+      opacity: 0.35;
+      pointer-events: none;
+      mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, #000 40%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, #000 40%, transparent 100%);
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-xlight);
+      border: 1px solid var(--accent-light);
+      border-radius: 100px;
+      padding: 6px 16px;
+      margin-bottom: 20px;
+      font-family: var(--font-head);
+    }
+
+    .section-label-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: inline-block;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.7); }
+    }
+
+    .section-heading {
+      font-family: var(--font-head);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text-dark);
+      line-height: 1.15;
+    }
+
+    .section-heading span.gradient-text {
+      background: linear-gradient(135deg, var(--accent) 0%, #4F46E5 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .section-subtext {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+      max-width: 580px;
+      margin-top: 16px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 700;
+      border-radius: 100px;
+      padding: 14px 32px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: var(--transition);
+      white-space: nowrap;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.15);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: -1;
+    }
+
+    .btn:hover::before {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .btn:active {
+      transform: scale(0.96);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent) 0%, #3B82F6 100%);
+      color: #fff;
+      box-shadow: 0 8px 30px rgba(37, 99, 235, 0.25);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 12px 40px rgba(37, 99, 235, 0.35);
+      transform: translateY(-2px);
+    }
+
+    /* =========================================================
+       NAVBAR (GLASSMORPHIC)
+    ========================================================= */
+    #navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(255, 255, 255, 0.8);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+      transition: var(--transition);
+    }
+
+    #navbar.scrolled {
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+      border-bottom-color: rgba(226, 232, 240, 0.8);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-head);
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--accent) 0%, #4F46E5 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.25rem;
+      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+    }
+
+    .logo-text {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      letter-spacing: -0.03em;
+    }
+
+    .logo-text span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-links a {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      padding: 8px 18px;
+      border-radius: 8px;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--text-dark);
+      background: var(--bg-light);
+    }
+
+    .nav-links a.active {
+      color: var(--accent);
+      background: var(--accent-xlight);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .nav-cta {
+      font-size: 0.88rem;
+      padding: 10px 24px;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 44px;
+      height: 44px;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      border-radius: 10px;
+      gap: 6px;
+      transition: var(--transition);
+      z-index: 1100;
+    }
+
+    .hamburger:hover {
+      background: var(--bg-light);
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text-dark);
+      border-radius: 2px;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s, width 0.3s;
+    }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    /* Mobile Menu */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .mobile-menu.open {
+      display: flex;
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .mobile-menu a {
+      font-family: var(--font-head);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      padding: 12px 36px;
+      border-radius: 14px;
+      transition: var(--transition);
+      letter-spacing: -0.02em;
+    }
+
+    .mobile-menu a:hover, .mobile-menu a.active {
+      color: var(--accent);
+      background: var(--accent-xlight);
+      transform: scale(1.05);
+    }
+
+    /* =========================================================
+       PAGE HERO (3D WAVE GRID CANVAS)
+    ========================================================= */
+    .page-hero {
+      position: relative;
+      background: var(--bg-light);
+      padding: 180px 24px 100px;
+      text-align: center;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-canvas-container {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      opacity: 0.8;
+    }
+
+    #wave-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .page-hero h1 {
+      font-family: var(--font-head);
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--text-dark);
+      margin-bottom: 20px;
+    }
+
+    .page-hero h1 span.gradient {
+      background: linear-gradient(135deg, var(--accent) 0%, #4F46E5 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .page-hero p {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* =========================================================
+       SERVICES GRID
+    ========================================================= */
+    .services-section {
+      background: var(--bg-white);
+      padding: 120px 24px;
+      position: relative;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .service-card-3d-wrap {
+      perspective: 1000px;
+    }
+
+    .service-card {
+      background: var(--bg-white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 48px 40px;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      cursor: default;
+      transform-style: preserve-3d;
+      will-change: transform;
+      height: 100%;
+    }
+
+    .service-card:hover {
+      border-color: var(--accent);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      transform: translateZ(30px);
+    }
+
+    .card-icon-wrap {
+      width: 64px;
+      height: 64px;
+      background: var(--accent-xlight);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      flex-shrink: 0;
+      transition: var(--transition);
+    }
+
+    .service-card:hover .card-icon-wrap {
+      background: var(--accent);
+      color: #fff;
+      transform: scale(1.05);
+    }
+
+    .card-icon-wrap svg {
+      width: 28px;
+      height: 28px;
+      stroke-width: 2;
+    }
+
+    .card-title {
+      font-family: var(--font-head);
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      letter-spacing: -0.02em;
+    }
+
+    .card-body {
+      transform: translateZ(20px);
+    }
+
+    .card-body p {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      line-height: 1.78;
+      margin-bottom: 20px;
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      background: var(--accent-xlight);
+      border: 1px solid rgba(37, 99, 235, 0.1);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 4px 14px;
+      border-radius: 100px;
+      transition: var(--transition);
+    }
+
+    .service-card:hover .tag {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+
+    /* =========================================================
+       PROCESS SECTION (SCROLL-DRAWN TIMELINE)
+    ========================================================= */
+    .process-section {
+      background: var(--bg-light);
+      padding: 120px 24px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+
+    .process-header {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .process-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    /* SVG Timeline Connector Track */
+    .timeline-svg-wrapper {
+      position: absolute;
+      top: 50px;
+      left: 10%;
+      right: 10%;
+      height: 4px;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .timeline-svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    .timeline-svg line {
+      stroke-linecap: round;
+    }
+
+    .timeline-bg-line {
+      stroke: var(--border);
+      stroke-width: 3;
+    }
+
+    .timeline-draw-line {
+      stroke: var(--accent);
+      stroke-width: 4;
+      stroke-dasharray: 8 8;
+      stroke-dashoffset: 0; /* Animated in script */
+    }
+
+    .process-flow {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      z-index: 2;
+      position: relative;
+    }
+
+    .process-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .step-circle {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: var(--bg-white);
+      border: 3px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 32px;
+      transition: var(--transition);
+      z-index: 5;
+      position: relative;
+    }
+
+    .process-step.active .step-circle {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+      transform: scale(1.1);
+    }
+
+    .step-number {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1.1;
+    }
+
+    .step-num-main {
+      font-family: var(--font-head);
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--text-dark);
+      transition: color 0.3s;
+    }
+
+    .process-step.active .step-num-main {
+      color: #fff;
+    }
+
+    .step-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+
+    .process-step.active .step-label {
+      color: rgba(255,255,255,0.7);
+    }
+
+    .step-title {
+      font-family: var(--font-head);
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+    }
+
+    .step-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      max-width: 220px;
+    }
+
+    /* =========================================================
+       CTA SECTION
+    ========================================================= */
+    .cta-section {
+      padding: 100px 24px;
+      background: var(--bg-white);
+    }
+
+    .cta-banner {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, var(--accent) 0%, #4F46E5 100%);
+      border-radius: var(--radius-xl);
+      padding: 80px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-xl);
+    }
+
+    .cta-banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,.08) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+    .cta-inner {
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-banner h2 {
+      font-family: var(--font-head);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 16px;
+      letter-spacing: -0.03em;
+    }
+
+    .cta-banner p {
+      color: rgba(255,255,255,.8);
+      font-size: 1.1rem;
+      max-width: 500px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #fff;
+      color: var(--accent);
+      font-weight: 800;
+      padding: 16px 40px;
+      border-radius: 100px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.15);
+      transition: var(--transition);
+    }
+
+    .btn-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 40px rgba(0,0,0,.22);
+    }
+
+    .btn-cta svg {
+      width: 18px;
+      height: 18px;
+      transition: transform 0.2s;
+    }
+
+    .btn-cta:hover svg {
+      transform: translateX(4px);
+    }
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+    #footer {
+      background: #0B1120;
+      color: #94A3B8;
+      padding: 100px 0 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 60px;
+      padding-bottom: 60px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .footer-brand {
+      max-width: 320px;
+    }
+
+    .footer-brand p {
+      font-size: 0.95rem;
+      line-height: 1.75;
+      margin-top: 16px;
+      color: #64748B;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #94A3B8;
+      transition: var(--transition);
+    }
+
+    .social-link:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+      transform: translateY(-3px);
+    }
+
+    .social-link svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-head);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #fff;
+      margin-bottom: 24px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .footer-col ul li a {
+      font-size: 0.95rem;
+      color: #94A3B8;
+    }
+
+    .footer-col ul li a:hover {
+      color: #fff;
+      padding-left: 4px;
+    }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 40px;
+      font-size: 0.85rem;
+      color: #64748B;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-bottom-links a:hover {
+      color: #fff;
+    }
+
+    /* =========================================================
+       RESPONSIVE DESIGN & MOBILE OPTIMIZATION
+    ========================================================= */
+    @media (max-width: 1024px) {
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .process-flow {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 60px 40px;
+      }
+      .timeline-svg-wrapper {
+        display: none; /* Hide dashed connector line on mobile */
+      }
+      .footer-top {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+      .process-flow {
+        grid-template-columns: 1fr;
+        gap: 50px;
+      }
+      .footer-top {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page-hero {
+        padding: 140px 20px 80px;
+      }
+      .cta-banner {
+        padding: 48px 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ==========================================
+       HEADER / NAVIGATION
+  =========================================== -->
+  <header id="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-icon">S</div>
+        <span class="logo-text">Softoware<span>.</span></span>
+      </a>
+
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="index.html">Home</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="services.html" class="active">Services</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="nav-right">
+        <a href="contact.html" class="btn btn-primary nav-cta">Start a Project</a>
+        <button class="hamburger" id="hamburger-btn" aria-label="Toggle Menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <nav class="mobile-menu" id="mobile-menu-overlay" aria-label="Mobile Navigation">
+      <a href="index.html">Home</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="services.html" class="active">Services</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="btn btn-primary nav-cta" style="margin-top: 20px;">Start a Project</a>
+    </nav>
+  </header>
+
+  <!-- ==========================================
+       PAGE HERO (3D WAVE RIPPLE)
+  =========================================== -->
+  <section class="page-hero">
+    <div class="hero-canvas-container">
+      <canvas id="wave-canvas"></canvas>
+    </div>
+    <div class="hero-content">
+      <div class="section-label">
+        <span class="section-label-dot"></span>
+        Our Capabilities
+      </div>
+      <h1>Premium Engineering <span class="gradient">Services</span></h1>
+      <p>From highly scalable web infrastructure to conversion-optimized advertising funnels — we assemble custom tech stacks that compound business results.</p>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SERVICES GRID SECTION
+  =========================================== -->
+  <section class="services-section">
+    <div class="services-grid">
+
+      <!-- Card 1: Custom Web Development -->
+      <div class="service-card-3d-wrap">
+        <div class="service-card card-3d">
+          <div class="card-header">
+            <div class="card-icon-wrap"><i data-lucide="code-2"></i></div>
+            <h2 class="card-title">Custom Web Development</h2>
+          </div>
+          <div class="card-body">
+            <p>We architect high-performance, responsive websites and SaaS apps. Our builds load in under 2 seconds, utilize modern components (React, Next.js, Node.js), and are strictly engineered to convert visitors into customers.</p>
+            <div class="card-tags">
+              <span class="tag">React</span>
+              <span class="tag">Next.js</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">REST APIs</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: E-Commerce & CMS -->
+      <div class="service-card-3d-wrap">
+        <div class="service-card card-3d">
+          <div class="card-header">
+            <div class="card-icon-wrap"><i data-lucide="shopping-cart"></i></div>
+            <h2 class="card-title">E-Commerce &amp; CMS</h2>
+          </div>
+          <div class="card-body">
+            <p>Conversion-centered storefronts built on Shopify, WordPress, and WooCommerce. We design custom shopping checkout flows, minimize cart abandonments, and automate inventory systems to maximize lifetime value.</p>
+            <div class="card-tags">
+              <span class="tag">Shopify</span>
+              <span class="tag">WordPress</span>
+              <span class="tag">WooCommerce</span>
+              <span class="tag">Elementor</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Performance Marketing -->
+      <div class="service-card-3d-wrap">
+        <div class="service-card card-3d">
+          <div class="card-header">
+            <div class="card-icon-wrap"><i data-lucide="trending-up"></i></div>
+            <h2 class="card-title">Performance Marketing</h2>
+          </div>
+          <div class="card-body">
+            <p>Highly optimized ad campaigns across Meta and Google. We engineer the complete lead acquisition funnel, handle copy, structure ad sets, and perform active A/B testing to generate a 3x-8x return on ad spend.</p>
+            <div class="card-tags">
+              <span class="tag">Meta Ads</span>
+              <span class="tag">Google Ads</span>
+              <span class="tag">Conversion Funnels</span>
+              <span class="tag">ROAS Tracking</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: UI/UX Design -->
+      <div class="service-card-3d-wrap">
+        <div class="service-card card-3d">
+          <div class="card-header">
+            <div class="card-icon-wrap"><i data-lucide="palette"></i></div>
+            <h2 class="card-title">UI/UX Design</h2>
+          </div>
+          <div class="card-body">
+            <p>User-centered interface designs crafted in Figma. We align aesthetic polish with customer journey mapping, structural wireframes, and fully interactive high-fidelity prototypes that drive higher retention.</p>
+            <div class="card-tags">
+              <span class="tag">Figma</span>
+              <span class="tag">Wireframing</span>
+              <span class="tag">Prototypes</span>
+              <span class="tag">Design Systems</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5: SEO Strategy -->
+      <div class="service-card-3d-wrap">
+        <div class="service-card card-3d">
+          <div class="card-header">
+            <div class="card-icon-wrap"><i data-lucide="search"></i></div>
+            <h2 class="card-title">SEO &amp; Content</h2>
+          </div>
+          <div class="card-body">
+            <p>Dominate search algorithms with on-page technical optimization, semantic structure mapping, and data-backed content campaigns that rank higher and capture organic transactional traffic.</p>
+            <div class="card-tags">
+              <span class="tag">Technical SEO</span>
+              <span class="tag">Auditing</span>
+              <span class="tag">Keyword Strategy</span>
+              <span class="tag">Content Mapping</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 6: Cloud & DevOps -->
+      <div class="service-card-3d-wrap">
+        <div class="service-card card-3d">
+          <div class="card-header">
+            <div class="card-icon-wrap"><i data-lucide="cloud"></i></div>
+            <h2 class="card-title">Cloud &amp; DevOps</h2>
+          </div>
+          <div class="card-body">
+            <p>Secure, elastic hosting on AWS/GCP. We set up isolated CI/CD deploy pipelines, Docker containerized architectures, load balancers, and 24/7 logging clusters that assure 99.9% system availability.</p>
+            <div class="card-tags">
+              <span class="tag">AWS</span>
+              <span class="tag">Docker</span>
+              <span class="tag">CI/CD Pipelines</span>
+              <span class="tag">Kubernetes</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       PROCESS SECTION (SCROLL-TRIGGERED TIMELINE)
+  =========================================== -->
+  <section class="process-section">
+    <div class="process-header">
+      <div class="section-label">
+        <span class="section-label-dot"></span>
+        Workflow
+      </div>
+      <h2>Our Product Delivery Process</h2>
+    </div>
+
+    <div class="process-container">
+      <!-- Dashed SVG timeline that draws itself -->
+      <div class="timeline-svg-wrapper">
+        <svg class="timeline-svg">
+          <!-- Background Line -->
+          <line x1="0" y1="2" x2="100%" y2="2" class="timeline-bg-line" />
+          <!-- Animated drawing Line -->
+          <line x1="0" y1="2" x2="0%" y2="2" class="timeline-draw-line" id="draw-line" />
+        </svg>
+      </div>
+
+      <div class="process-flow">
+        <!-- Step 1 -->
+        <div class="process-step" id="step-1">
+          <div class="step-circle">
+            <div class="step-number">
+              <span class="step-num-main">01</span>
+              <span class="step-label">Discovery</span>
+            </div>
+          </div>
+          <h3 class="step-title">1. Technical Mapping</h3>
+          <p class="step-desc">We outline system requirements, map user flows, and align tech stacks with business goals.</p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="process-step" id="step-2">
+          <div class="step-circle">
+            <div class="step-number">
+              <span class="step-num-main">02</span>
+              <span class="step-label">Design</span>
+            </div>
+          </div>
+          <h3 class="step-title">2. Interface Systems</h3>
+          <p class="step-desc">We build interactive Figma wireframes and design libraries for seamless development handoff.</p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="process-step" id="step-3">
+          <div class="step-circle">
+            <div class="step-number">
+              <span class="step-num-main">03</span>
+              <span class="step-label">Build</span>
+            </div>
+          </div>
+          <h3 class="step-title">3. Agile Production</h3>
+          <p class="step-desc">We engineer features in 2-week iterations, posting live progress updates on staging environments.</p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="process-step" id="step-4">
+          <div class="step-circle">
+            <div class="step-number">
+              <span class="step-num-main">04</span>
+              <span class="step-label">Launch</span>
+            </div>
+          </div>
+          <h3 class="step-title">4. Deploy &amp; Scale</h3>
+          <p class="step-desc">We optimize load speeds, configure servers, set up campaigns, and start active monitoring.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       CTA BANNER
+  =========================================== -->
+  <section class="cta-section">
+    <div class="cta-banner">
+      <div class="cta-inner">
+        <h2>Have a Specific Project Scope?</h2>
+        <p>Book a direct meeting with a development architect to review system wireframes and budget requirements.</p>
+        <a href="contact.html" class="btn-cta">Start Discussion <i data-lucide="arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       FOOTER
+  =========================================== -->
+  <footer id="footer">
+    <div class="container footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">
+          <div class="logo-icon">S</div>
+          <span class="logo-text" style="color: #fff">Softoware<span>.</span></span>
+        </a>
+        <p>Consolidating world-class web engineering and performance customer acquisition under one team.</p>
+        <div class="social-links">
+          <a href="#" class="social-link"><i data-lucide="twitter"></i></a>
+          <a href="#" class="social-link"><i data-lucide="linkedin"></i></a>
+          <a href="#" class="social-link"><i data-lucide="github"></i></a>
+          <a href="#" class="social-link"><i data-lucide="dribbble"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Capabilities</h4>
+        <ul>
+          <li><a href="services.html">Web Development</a></li>
+          <li><a href="services.html">E-Commerce &amp; CMS</a></li>
+          <li><a href="services.html">Acquisition Marketing</a></li>
+          <li><a href="services.html">UI/UX Design</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Softoware</h4>
+        <ul>
+          <li><a href="about.html">About Our Agency</a></li>
+          <li><a href="portfolio.html">Featured Work</a></li>
+          <li><a href="contact.html">Careers</a></li>
+          <li><a href="contact.html">Book Call</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Get In Touch</h4>
+        <ul>
+          <li><a href="mailto:hello@softoware.com">hello@softoware.com</a></li>
+          <li><a href="tel:+14155550182">+1 (415) 555-0182</a></li>
+          <li><a href="#">San Francisco, CA</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>&copy; 2026 Softoware. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       JAVASCRIPT LOGIC
+  =========================================== -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // =========================================================
+    // LENIS SMOOTH SCROLL
+    // =========================================================
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smooth: true,
+      touchSmooth: false
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    // =========================================================
+    // MOBILE NAVIGATION
+    // =========================================================
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+
+    hamburgerBtn.addEventListener('click', () => {
+      const isOpen = hamburgerBtn.classList.toggle('open');
+      mobileMenuOverlay.classList.toggle('open', isOpen);
+      hamburgerBtn.setAttribute('aria-expanded', isOpen);
+      document.body.classList.toggle('menu-open', isOpen);
+    });
+
+    // =========================================================
+    // HEADER SCROLL STATE
+    // =========================================================
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // =========================================================
+    // HERO 3D SINE WAVE GRID (HTML5 CANVAS)
+    // =========================================================
+    const canvas = document.getElementById('wave-canvas');
+    const ctx = canvas.getContext('2d');
+
+    let width, height;
+    function resizeCanvas() {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      width = canvas.width = rect.width;
+      height = canvas.height = rect.height;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    // Mathematical grid values
+    const rows = 18;
+    const cols = 28;
+    let time = 0;
+
+    let targetMouseY = 0;
+    let currentMouseY = 0;
+
+    if (window.matchMedia('(hover: hover)').matches) {
+      window.addEventListener('mousemove', (e) => {
+        targetMouseY = (e.clientY / window.innerHeight) - 0.5;
+      });
+    }
+
+    function drawWave() {
+      ctx.clearRect(0, 0, width, height);
+
+      currentMouseY += (targetMouseY - currentMouseY) * 0.05;
+      time += 0.015;
+
+      const spacingX = width / (cols - 1);
+      const spacingY = height / (rows - 1);
+      const perspective = 400;
+
+      ctx.strokeStyle = 'rgba(37, 99, 235, 0.06)';
+      ctx.lineWidth = 1;
+
+      // Draw grid lines
+      for (let r = 0; r < rows; r++) {
+        ctx.beginPath();
+        for (let c = 0; c < cols; c++) {
+          const x = c * spacingX;
+          const y = r * spacingY;
+
+          // Wave calculation
+          const distFromCenter = Math.sqrt(Math.pow(x - width/2, 2) + Math.pow(y - height/2, 2));
+          const wave = Math.sin(distFromCenter * 0.01 - time) * 35;
+          const mouseEffect = Math.cos(y * 0.01 + time) * (currentMouseY * 40);
+
+          const z = wave + mouseEffect;
+          const scale = perspective / (perspective + z);
+          
+          const projX = (x - width/2) * scale + width/2;
+          const projY = (y - height/2) * scale + height/2 + z * 0.4;
+
+          if (c === 0) {
+            ctx.moveTo(projX, projY);
+          } else {
+            ctx.lineTo(projX, projY);
+          }
+        }
+        ctx.stroke();
+      }
+
+      // Draw horizontal cross grid lines
+      for (let c = 0; c < cols; c += 2) {
+        ctx.beginPath();
+        for (let r = 0; r < rows; r++) {
+          const x = c * spacingX;
+          const y = r * spacingY;
+
+          const distFromCenter = Math.sqrt(Math.pow(x - width/2, 2) + Math.pow(y - height/2, 2));
+          const wave = Math.sin(distFromCenter * 0.01 - time) * 35;
+          const mouseEffect = Math.cos(y * 0.01 + time) * (currentMouseY * 40);
+
+          const z = wave + mouseEffect;
+          const scale = perspective / (perspective + z);
+
+          const projX = (x - width/2) * scale + width/2;
+          const projY = (y - height/2) * scale + height/2 + z * 0.4;
+
+          if (r === 0) {
+            ctx.moveTo(projX, projY);
+          } else {
+            ctx.lineTo(projX, projY);
+          }
+        }
+        ctx.stroke();
+      }
+
+      requestAnimationFrame(drawWave);
+    }
+    drawWave();
+
+    // =========================================================
+    // GSAP + SCROLLTRIGGER ANIMATION MATRIX
+    // =========================================================
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Fade-in Hero
+    gsap.from('.hero-content > *', {
+      y: 40,
+      opacity: 0,
+      duration: 1,
+      stagger: 0.15,
+      ease: 'power3.out'
+    });
+
+    // Stagger reveal service cards
+    gsap.from('.service-card-3d-wrap', {
+      y: 60,
+      opacity: 0,
+      duration: 1,
+      stagger: 0.1,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '.services-grid',
+        start: 'top 75%',
+        toggleActions: 'play none none none'
+      }
+    });
+
+    // Scroll-triggered Delivery Process Timeline Line drawing
+    const lineTimeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.process-section',
+        start: 'top 60%',
+        end: 'bottom 80%',
+        scrub: 1,
+        invalidateOnRefresh: true
+      }
+    });
+
+    // Animate width of the dashed SVG line
+    lineTimeline.fromTo('#draw-line', 
+      { attr: { x2: '0%' } },
+      { attr: { x2: '100%' }, ease: 'none' }
+    );
+
+    // Active classes toggles for process circles based on scroll progress
+    const steps = [
+      { id: '#step-1', progress: 0.1 },
+      { id: '#step-2', progress: 0.4 },
+      { id: '#step-3', progress: 0.7 },
+      { id: '#step-4', progress: 0.95 }
+    ];
+
+    steps.forEach(step => {
+      ScrollTrigger.create({
+        trigger: '.process-section',
+        start: () => `top+=${(step.progress * 0.5) * window.innerHeight} 50%`,
+        onEnter: () => document.querySelector(step.id).classList.add('active'),
+        onLeaveBack: () => document.querySelector(step.id).classList.remove('active')
+      });
+    });
+
+    // =========================================================
+    // INTERACTIVE 3D HOVER TILT EFFECTS (GSAP POWERED)
+    // =========================================================
+    if (window.matchMedia('(hover: hover)').matches) {
+      const cards3d = document.querySelectorAll('.card-3d');
+      
+      cards3d.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left - rect.width / 2;
+          const y = e.clientY - rect.top - rect.height / 2;
+          
+          const rotateX = -(y / (rect.height / 2)) * 10;
+          const rotateY = (x / (rect.width / 2)) * 10;
+          
+          gsap.to(card, {
+            rotateX: rotateX,
+            rotateY: rotateY,
+            scale: 1.02,
+            duration: 0.35,
+            ease: 'power2.out',
+            transformPerspective: 1000,
+            boxShadow: '0 20px 40px rgba(15, 23, 42, 0.08)'
+          });
+        });
+        
+        card.addEventListener('mouseleave', () => {
+          gsap.to(card, {
+            rotateX: 0,
+            rotateY: 0,
+            scale: 1,
+            duration: 0.6,
+            ease: 'power2.out',
+            boxShadow: 'none'
+          });
+        });
+      });
+    }
+  </script>
+</body>
+</html>

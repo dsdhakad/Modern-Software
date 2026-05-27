@@ -1,0 +1,1589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us — Softoware</title>
+  <meta name="description" content="Learn about Softoware — a premium software engineering and digital marketing agency built on code, driven by results." />
+
+  <!-- Google Fonts: Plus Jakarta Sans & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- CDNs: GSAP, ScrollTrigger, Lenis (Smooth Scroll) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* =========================================================
+       RESET & BASE DESIGN SYSTEM
+    ========================================================= */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg-white: #FFFFFF;
+      --bg-light: #F8FAFC;
+      --text-dark: #0F172A;
+      --text-muted: #64748B;
+      --text-light: #94A3B8;
+      --accent: #2563EB;
+      --accent-hover: #1D4ED8;
+      --accent-light: #BFDBFE;
+      --accent-xlight: #EFF6FF;
+      --border: #E2E8F0;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 24px;
+      --radius-xl: 32px;
+      --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
+      --shadow-md: 0 10px 30px rgba(15, 23, 42, 0.06);
+      --shadow-lg: 0 20px 50px rgba(37, 99, 235, 0.08);
+      --shadow-xl: 0 30px 80px rgba(37, 99, 235, 0.12);
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --font-head: 'Outfit', sans-serif;
+      --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    html.lenis {
+      height: auto;
+    }
+    .lenis.lenis-smooth {
+      scroll-behavior: auto !important;
+    }
+    .lenis.lenis-stopped {
+      overflow: hidden;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-white);
+      color: var(--text-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition);
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+      border-radius: var(--radius-md);
+    }
+
+    /* =========================================================
+       UTILITIES & MODERN STYLING
+    ========================================================= */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .glow-grid {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, #CBD5E1 1px, transparent 1px);
+      background-size: 32px 32px;
+      opacity: 0.35;
+      pointer-events: none;
+      mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, #000 40%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, #000 40%, transparent 100%);
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-xlight);
+      border: 1px solid var(--accent-light);
+      border-radius: 100px;
+      padding: 6px 16px;
+      margin-bottom: 20px;
+      font-family: var(--font-head);
+    }
+
+    .section-label-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: inline-block;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.7); }
+    }
+
+    .section-heading {
+      font-family: var(--font-head);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text-dark);
+      line-height: 1.15;
+    }
+
+    .section-heading span.gradient-text {
+      background: linear-gradient(135deg, var(--accent) 0%, #4F46E5 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .section-subtext {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+      max-width: 580px;
+      margin-top: 16px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 700;
+      border-radius: 100px;
+      padding: 14px 32px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: var(--transition);
+      white-space: nowrap;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.15);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: -1;
+    }
+
+    .btn:hover::before {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .btn:active {
+      transform: scale(0.96);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent) 0%, #3B82F6 100%);
+      color: #fff;
+      box-shadow: 0 8px 30px rgba(37, 99, 235, 0.25);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 12px 40px rgba(37, 99, 235, 0.35);
+      transform: translateY(-2px);
+    }
+
+    /* =========================================================
+       NAVBAR (GLASSMORPHIC)
+    ========================================================= */
+    #navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(255, 255, 255, 0.8);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+      transition: var(--transition);
+    }
+
+    #navbar.scrolled {
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+      border-bottom-color: rgba(226, 232, 240, 0.8);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-head);
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--accent) 0%, #4F46E5 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.25rem;
+      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+    }
+
+    .logo-text {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      letter-spacing: -0.03em;
+    }
+
+    .logo-text span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-links a {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      padding: 8px 18px;
+      border-radius: 8px;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--text-dark);
+      background: var(--bg-light);
+    }
+
+    .nav-links a.active {
+      color: var(--accent);
+      background: var(--accent-xlight);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .nav-cta {
+      font-size: 0.88rem;
+      padding: 10px 24px;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 44px;
+      height: 44px;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      border-radius: 10px;
+      gap: 6px;
+      transition: var(--transition);
+      z-index: 1100;
+    }
+
+    .hamburger:hover {
+      background: var(--bg-light);
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text-dark);
+      border-radius: 2px;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s, width 0.3s;
+    }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    /* Mobile Menu */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .mobile-menu.open {
+      display: flex;
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .mobile-menu a {
+      font-family: var(--font-head);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      padding: 12px 36px;
+      border-radius: 14px;
+      transition: var(--transition);
+      letter-spacing: -0.02em;
+    }
+
+    .mobile-menu a:hover, .mobile-menu a.active {
+      color: var(--accent);
+      background: var(--accent-xlight);
+      transform: scale(1.05);
+    }
+
+    /* =========================================================
+       PAGE HERO (3D ORBITAL PARTICLES)
+    ========================================================= */
+    .page-hero {
+      position: relative;
+      background: var(--bg-white);
+      padding: 180px 24px 100px;
+      text-align: center;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-canvas-container {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      opacity: 0.85;
+    }
+
+    #orbital-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .page-hero h1 {
+      font-family: var(--font-head);
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--text-dark);
+      margin-bottom: 20px;
+    }
+
+    .page-hero h1 span.gradient {
+      background: linear-gradient(135deg, var(--accent) 0%, #4F46E5 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .page-hero p {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* =========================================================
+       MISSION SECTION (GSAP PINNING & STACKING)
+    ========================================================= */
+    .mission-section {
+      background: var(--bg-white);
+      padding: 120px 24px;
+      position: relative;
+    }
+
+    .mission-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .mission-left {
+      position: sticky;
+      top: 140px; /* Pins as the right side scrolls */
+    }
+
+    .mission-left h2 {
+      font-family: var(--font-head);
+      font-size: clamp(1.8rem, 3.5vw, 2.75rem);
+      font-weight: 800;
+      line-height: 1.15;
+      color: var(--text-dark);
+      margin-bottom: 24px;
+      letter-spacing: -0.03em;
+    }
+
+    .mission-left h2 span.gradient {
+      background: linear-gradient(135deg, var(--accent) 0%, #4F46E5 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .mission-left p {
+      font-size: 1.02rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    /* Stacking Value Cards */
+    .mission-right {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      padding-bottom: 80px;
+    }
+
+    .value-card-wrap {
+      perspective: 1000px;
+      width: 100%;
+    }
+
+    .value-card {
+      background: var(--bg-light);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      box-shadow: var(--shadow-sm);
+      will-change: transform;
+      position: relative;
+    }
+
+    .value-card:hover {
+      border-color: var(--accent);
+      box-shadow: var(--shadow-lg);
+      background: var(--bg-white);
+    }
+
+    .value-icon-wrap {
+      width: 52px;
+      height: 52px;
+      background: var(--accent-xlight);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      transition: var(--transition);
+    }
+
+    .value-card:hover .value-icon-wrap {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .value-icon-wrap svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .value-title {
+      font-family: var(--font-head);
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      letter-spacing: -0.02em;
+    }
+
+    .value-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    /* =========================================================
+       WHY CHOOSE US (GRID)
+    ========================================================= */
+    .why-us {
+      background: var(--bg-light);
+      padding: 120px 24px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .why-header {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .reasons-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .reason-card-wrap {
+      perspective: 1000px;
+    }
+
+    .reason-card {
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 36px 32px;
+      transition: var(--transition);
+      transform-style: preserve-3d;
+      will-change: transform;
+      height: 100%;
+    }
+
+    .reason-card:hover {
+      border-color: var(--accent-light);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .reason-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--accent-xlight);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      margin-bottom: 24px;
+      transition: var(--transition);
+    }
+
+    .reason-card:hover .reason-icon {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .reason-icon svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .reason-card h3 {
+      font-family: var(--font-head);
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 10px;
+      letter-spacing: -0.02em;
+    }
+
+    .reason-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    /* =========================================================
+       TEAM SECTION (3D CARDS)
+    ========================================================= */
+    .team-section {
+      background: var(--bg-white);
+      padding: 120px 24px;
+    }
+
+    .team-header {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .team-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .team-card-wrap {
+      perspective: 1000px;
+    }
+
+    .team-card {
+      background: var(--bg-white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 40px 32px;
+      text-align: center;
+      transition: var(--transition);
+      transform-style: preserve-3d;
+      will-change: transform;
+      height: 100%;
+    }
+
+    .team-card:hover {
+      border-color: var(--accent);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .team-avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-head);
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #fff;
+      margin: 0 auto 24px;
+      box-shadow: var(--shadow-md);
+      transform: translateZ(30px);
+    }
+
+    .avatar-blue    { background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%); }
+    .avatar-purple  { background: linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%); }
+    .avatar-emerald { background: linear-gradient(135deg, #059669 0%, #047857 100%); }
+
+    .team-role-badge {
+      display: inline-block;
+      background: var(--accent-xlight);
+      color: var(--accent);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 100px;
+      border: 1px solid rgba(37, 99, 235, 0.1);
+      margin-bottom: 16px;
+      transform: translateZ(20px);
+    }
+
+    .team-card h3 {
+      font-family: var(--font-head);
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 6px;
+      letter-spacing: -0.02em;
+      transform: translateZ(25px);
+    }
+
+    .team-card .team-title {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-bottom: 16px;
+      transform: translateZ(15px);
+    }
+
+    .team-card .team-bio {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 24px;
+      transform: translateZ(10px);
+    }
+
+    .team-socials {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transform: translateZ(20px);
+    }
+
+    .team-socials a {
+      width: 36px;
+      height: 36px;
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      transition: var(--transition);
+    }
+
+    .team-socials a:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .team-socials a svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* =========================================================
+       CTA BANNER
+    ========================================================= */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--accent) 0%, #4F46E5 100%);
+      padding: 100px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .cta-banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,.08) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    .cta-banner-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .cta-banner h2 {
+      font-family: var(--font-head);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 16px;
+      letter-spacing: -0.03em;
+    }
+
+    .cta-banner p {
+      color: rgba(255,255,255,0.8);
+      font-size: 1.1rem;
+      margin-bottom: 40px;
+      line-height: 1.7;
+    }
+
+    .btn-white {
+      background: #fff;
+      color: var(--accent);
+    }
+
+    .btn-white:hover {
+      background: var(--accent-xlight);
+      box-shadow: 0 10px 30px rgba(255,255,255,0.25);
+    }
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+    #footer {
+      background: #0B1120;
+      color: #94A3B8;
+      padding: 100px 0 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 60px;
+      padding-bottom: 60px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .footer-brand {
+      max-width: 320px;
+    }
+
+    .footer-brand p {
+      font-size: 0.95rem;
+      line-height: 1.75;
+      margin-top: 16px;
+      color: #64748B;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #94A3B8;
+      transition: var(--transition);
+    }
+
+    .social-link:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+      transform: translateY(-3px);
+    }
+
+    .social-link svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-head);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #fff;
+      margin-bottom: 24px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .footer-col ul li a {
+      font-size: 0.95rem;
+      color: #94A3B8;
+    }
+
+    .footer-col ul li a:hover {
+      color: #fff;
+      padding-left: 4px;
+    }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 40px;
+      font-size: 0.85rem;
+      color: #64748B;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-bottom-links a:hover {
+      color: #fff;
+    }
+
+    /* =========================================================
+       RESPONSIVE DESIGN & MOBILE OPTIMIZATION
+    ========================================================= */
+    @media (max-width: 1024px) {
+      .mission-inner {
+        grid-template-columns: 1fr;
+        gap: 60px;
+      }
+      .mission-left {
+        position: static;
+        text-align: center;
+      }
+      .reasons-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .footer-top {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+      .reasons-grid {
+        grid-template-columns: 1fr;
+      }
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-top {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page-hero {
+        padding: 140px 20px 80px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ==========================================
+       HEADER / NAVIGATION
+  =========================================== -->
+  <header id="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-icon">S</div>
+        <span class="logo-text">Softoware<span>.</span></span>
+      </a>
+
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="index.html">Home</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="services.html">Services</a>
+        <a href="about.html" class="active">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="nav-right">
+        <a href="contact.html" class="btn btn-primary nav-cta">Start a Project</a>
+        <button class="hamburger" id="hamburger-btn" aria-label="Toggle Menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <nav class="mobile-menu" id="mobile-menu-overlay" aria-label="Mobile Navigation">
+      <a href="index.html">Home</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="services.html">Services</a>
+      <a href="about.html" class="active">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="btn btn-primary nav-cta" style="margin-top: 20px;">Start a Project</a>
+    </nav>
+  </header>
+
+  <!-- ==========================================
+       PAGE HERO (3D ORBITING RINGS)
+  =========================================== -->
+  <section class="page-hero">
+    <div class="hero-canvas-container">
+      <canvas id="orbital-canvas"></canvas>
+    </div>
+    <div class="hero-content">
+      <div class="section-label">
+        <span class="section-label-dot"></span>
+        Our Agency
+      </div>
+      <h1>Built on Code, <span class="gradient">Driven by Results.</span></h1>
+      <p>Softoware is a consolidating unit of elite software developers and digital copywriters engineered to scale enterprise digital products.</p>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       MISSION SECTION (GSAP PINNING & STACKING)
+  =========================================== -->
+  <section class="mission-section">
+    <div class="container mission-inner">
+      
+      <!-- Sticky Left Side -->
+      <div class="mission-left">
+        <div class="section-label">
+          <span class="section-label-dot"></span>
+          Our Mission
+        </div>
+        <h2>Where High Engineering Meets <span class="gradient">Performance Marketing</span></h2>
+        <p>Softoware was founded to bridge a glaring gap in the market. Traditionally, companies hired a development agency to write code, and then hired a marketing agency to acquire customers.</p>
+        <p>We realized this separation wastes resources. Clean code runs conversions, and conversions direct code optimization. We unify these paths to generate compound growth.</p>
+      </div>
+
+      <!-- Scrolling Stacking Right Side -->
+      <div class="mission-right">
+        
+        <!-- Stacking Card 1 -->
+        <div class="value-card-wrap">
+          <div class="value-card card-3d">
+            <div class="value-icon-wrap"><i data-lucide="eye"></i></div>
+            <h3 class="value-title">1. Total Transparency</h3>
+            <p class="value-desc">No black boxes, no jargon. We share live sprint backlogs, log time down to the hour, and report marketing returns honestly.</p>
+          </div>
+        </div>
+
+        <!-- Stacking Card 2 -->
+        <div class="value-card-wrap">
+          <div class="value-card card-3d">
+            <div class="value-icon-wrap"><i data-lucide="zap"></i></div>
+            <h3 class="value-title">2. Relentless Velocity</h3>
+            <p class="value-desc">We ship clean code on tight, predictable 2-week iterations. You see working updates on staging environments continuously.</p>
+          </div>
+        </div>
+
+        <!-- Stacking Card 3 -->
+        <div class="value-card-wrap">
+          <div class="value-card card-3d">
+            <div class="value-icon-wrap"><i data-lucide="handshake"></i></div>
+            <h3 class="value-title">3. Aligned Growth Partnership</h3>
+            <p class="value-desc">We measure our success by your metrics. We design structures to maximize conversions, lower customer acquisition costs, and boost margins.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       WHY CHOOSE US (GRID)
+  =========================================== -->
+  <section class="why-us">
+    <div class="why-header">
+      <div class="section-label">
+        <span class="section-label-dot"></span>
+        Core Principles
+      </div>
+      <h2>Why Partner With Softoware</h2>
+    </div>
+
+    <div class="reasons-grid">
+      <!-- Card 1 -->
+      <div class="reason-card-wrap">
+        <div class="reason-card card-3d">
+          <div class="reason-icon"><i data-lucide="shield-check"></i></div>
+          <h3>Pixel-Perfect Quality</h3>
+          <p>We inspect every CSS element, optimize page load metrics, and run unit tests prior to deployment.</p>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="reason-card-wrap">
+        <div class="reason-card card-3d">
+          <div class="reason-icon"><i data-lucide="bar-chart-2"></i></div>
+          <h3>Weekly Analytics Reporting</h3>
+          <p>We supply real-time dashboards mapping code changes directly to lead generation rates.</p>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="reason-card-wrap">
+        <div class="reason-card card-3d">
+          <div class="reason-icon"><i data-lucide="rotate-cw"></i></div>
+          <h3>Agile Iterative Sprints</h3>
+          <p>We run structured 2-week sprints, so progress is visible, auditable, and pivotable.</p>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="reason-card-wrap">
+        <div class="reason-card card-3d">
+          <div class="reason-icon"><i data-lucide="user-check"></i></div>
+          <h3>Dedicated Project Architect</h3>
+          <p>Your single point of contact is a senior product engineer, ensuring immediate, technical resolution.</p>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="reason-card-wrap">
+        <div class="reason-card card-3d">
+          <div class="reason-icon"><i data-lucide="cpu"></i></div>
+          <h3>Full-Stack Autonomy</h3>
+          <p>From custom API layers and databases to UI design and Meta advertising creative, we run it all.</p>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="reason-card-wrap">
+        <div class="reason-card card-3d">
+          <div class="reason-icon"><i data-lucide="trending-up"></i></div>
+          <h3>Proven Capital Return</h3>
+          <p>Our average client generates a 3x return on capital outlay within the first 6 months of launch.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       TEAM SECTION (3D CARDS)
+  =========================================== -->
+  <section class="team-section">
+    <div class="team-header">
+      <div class="section-label">
+        <span class="section-label-dot"></span>
+        The Founders
+      </div>
+      <h2>The Minds Behind Softoware</h2>
+    </div>
+
+    <div class="team-grid">
+      <!-- Member 1 -->
+      <div class="team-card-wrap">
+        <div class="team-card card-3d">
+          <div class="team-avatar avatar-blue">AC</div>
+          <span class="team-role-badge">Engineering</span>
+          <h3>Alex Carter</h3>
+          <p class="team-title">Lead Engineer &amp; Co-Founder</p>
+          <p class="team-bio">Alex has 10+ years of full-stack engineering expertise at scale. He designs the core cloud systems and API nodes.</p>
+          <div class="team-socials">
+            <a href="#"><i data-lucide="twitter"></i></a>
+            <a href="#"><i data-lucide="linkedin"></i></a>
+            <a href="#"><i data-lucide="github"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Member 2 -->
+      <div class="team-card-wrap">
+        <div class="team-card card-3d">
+          <div class="team-avatar avatar-purple">SM</div>
+          <span class="team-role-badge">Design Systems</span>
+          <h3>Sara Mitchell</h3>
+          <p class="team-title">Head of UI/UX Design</p>
+          <p class="team-bio">Sara crafts modern interface design systems in Figma, bridging user ergonomics with brand identity guidelines.</p>
+          <div class="team-socials">
+            <a href="#"><i data-lucide="twitter"></i></a>
+            <a href="#"><i data-lucide="linkedin"></i></a>
+            <a href="#"><i data-lucide="dribbble"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Member 3 -->
+      <div class="team-card-wrap">
+        <div class="team-card card-3d">
+          <div class="team-avatar avatar-emerald">JO</div>
+          <span class="team-role-badge">Acquisition</span>
+          <h3>James Obi</h3>
+          <p class="team-title">Performance Marketing Lead</p>
+          <p class="team-bio">James builds lead-generation frameworks, overseeing media spend targets and structuring A/B ad creative variations.</p>
+          <div class="team-socials">
+            <a href="#"><i data-lucide="twitter"></i></a>
+            <a href="#"><i data-lucide="linkedin"></i></a>
+            <a href="#"><i data-lucide="bar-chart-2"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       CTA BANNER
+  =========================================== -->
+  <section class="cta-banner">
+    <div class="cta-banner-inner">
+      <h2>Let's Engineer Your Digital Growth</h2>
+      <p>Consult with our team to map out a clear, comprehensive project scope document for your platform launch.</p>
+      <a href="contact.html" class="btn btn-white">Initiate Project Scope</a>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       FOOTER
+  =========================================== -->
+  <footer id="footer">
+    <div class="container footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">
+          <div class="logo-icon">S</div>
+          <span class="logo-text" style="color: #fff">Softoware<span>.</span></span>
+        </a>
+        <p>Consolidating world-class web engineering and performance customer acquisition under one team.</p>
+        <div class="social-links">
+          <a href="#" class="social-link"><i data-lucide="twitter"></i></a>
+          <a href="#" class="social-link"><i data-lucide="linkedin"></i></a>
+          <a href="#" class="social-link"><i data-lucide="github"></i></a>
+          <a href="#" class="social-link"><i data-lucide="dribbble"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Capabilities</h4>
+        <ul>
+          <li><a href="services.html">Web Development</a></li>
+          <li><a href="services.html">E-Commerce &amp; CMS</a></li>
+          <li><a href="services.html">Acquisition Marketing</a></li>
+          <li><a href="services.html">UI/UX Design</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Softoware</h4>
+        <ul>
+          <li><a href="about.html">About Our Agency</a></li>
+          <li><a href="portfolio.html">Featured Work</a></li>
+          <li><a href="contact.html">Careers</a></li>
+          <li><a href="contact.html">Book Call</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Get In Touch</h4>
+        <ul>
+          <li><a href="mailto:hello@softoware.com">hello@softoware.com</a></li>
+          <li><a href="tel:+14155550182">+1 (415) 555-0182</a></li>
+          <li><a href="#">San Francisco, CA</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>&copy; 2026 Softoware. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       JAVASCRIPT LOGIC
+  =========================================== -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // =========================================================
+    // LENIS SMOOTH SCROLL
+    // =========================================================
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smooth: true,
+      touchSmooth: false
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    // =========================================================
+    // MOBILE NAVIGATION
+    // =========================================================
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+
+    hamburgerBtn.addEventListener('click', () => {
+      const isOpen = hamburgerBtn.classList.toggle('open');
+      mobileMenuOverlay.classList.toggle('open', isOpen);
+      hamburgerBtn.setAttribute('aria-expanded', isOpen);
+      document.body.classList.toggle('menu-open', isOpen);
+    });
+
+    // =========================================================
+    // HEADER SCROLL STATE
+    // =========================================================
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // =========================================================
+    // HERO 3D ORBITAL PARTICLES (HTML5 CANVAS)
+    // =========================================================
+    const canvas = document.getElementById('orbital-canvas');
+    const ctx = canvas.getContext('2d');
+
+    let width, height;
+    function resizeCanvas() {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      width = canvas.width = rect.width;
+      height = canvas.height = rect.height;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    // Two orbiting rings setup
+    const ring1Particles = 120;
+    const ring2Particles = 100;
+    const particles = [];
+
+    // Create Ring 1 (Horizontal tilt)
+    for (let i = 0; i < ring1Particles; i++) {
+      const angle = (i / ring1Particles) * Math.PI * 2;
+      particles.push({
+        angle: angle,
+        radius: 200,
+        yOffset: -30,
+        speed: 0.006,
+        size: 1.5 + Math.random() * 2,
+        ring: 1
+      });
+    }
+
+    // Create Ring 2 (Vertical tilt)
+    for (let i = 0; i < ring2Particles; i++) {
+      const angle = (i / ring2Particles) * Math.PI * 2;
+      particles.push({
+        angle: angle,
+        radius: 170,
+        yOffset: 20,
+        speed: -0.008,
+        size: 1.5 + Math.random() * 1.5,
+        ring: 2
+      });
+    }
+
+    let targetRotY = 0;
+    let currentRotY = 0;
+
+    if (window.matchMedia('(hover: hover)').matches) {
+      window.addEventListener('mousemove', (e) => {
+        targetRotY = (e.clientX / window.innerWidth) - 0.5;
+      });
+    }
+
+    function drawOrbit() {
+      ctx.clearRect(0, 0, width, height);
+
+      currentRotY += (targetRotY - currentRotY) * 0.05;
+
+      const cx = width * 0.5;
+      const cy = height * 0.5;
+      const perspective = 500;
+
+      // Project and draw
+      const projected = [];
+
+      particles.forEach(p => {
+        p.angle += p.speed;
+
+        let x, y, z;
+        if (p.ring === 1) {
+          x = p.radius * Math.cos(p.angle);
+          z = p.radius * Math.sin(p.angle);
+          y = p.yOffset + z * 0.2;
+        } else {
+          z = p.radius * Math.cos(p.angle);
+          y = p.radius * Math.sin(p.angle) + p.yOffset;
+          x = z * 0.3;
+        }
+
+        // Apply mouse rotation on Y axis
+        const cosRY = Math.cos(currentRotY * 0.5);
+        const sinRY = Math.sin(currentRotY * 0.5);
+        const rotatedX = x * cosRY - z * sinRY;
+        const rotatedZ = z * cosRY + x * sinRY;
+
+        const scale = perspective / (perspective + rotatedZ);
+        const screenX = cx + rotatedX * scale;
+        const screenY = cy + y * scale;
+
+        projected.push({
+          x: screenX,
+          y: screenY,
+          z: rotatedZ,
+          radius: p.size * scale,
+          color: p.ring === 1 ? 'rgba(37, 99, 235,' : 'rgba(99, 102, 241,',
+          opacity: Math.max(0.1, (perspective - rotatedZ) / (perspective * 1.2))
+        });
+      });
+
+      // Sort by depth
+      projected.sort((a, b) => b.z - a.z);
+
+      // Draw connections within rings
+      ctx.lineWidth = 0.5;
+      for (let i = 0; i < projected.length; i++) {
+        const p1 = projected[i];
+        for (let j = i + 1; j < projected.length; j++) {
+          const p2 = projected[j];
+          if (p1.color === p2.color) { // Only connect same rings
+            const dx = p1.x - p2.x;
+            const dy = p1.y - p2.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < 45) {
+              ctx.strokeStyle = `${p1.color} ${p1.opacity * 0.15})`;
+              ctx.beginPath();
+              ctx.moveTo(p1.x, p1.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.stroke();
+            }
+          }
+        }
+      }
+
+      // Draw particle nodes
+      projected.forEach(p => {
+        ctx.fillStyle = `${p.color} ${p.opacity})`;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      requestAnimationFrame(drawOrbit);
+    }
+    drawOrbit();
+
+    // =========================================================
+    // GSAP + SCROLLTRIGGER ANIMATION MATRIX
+    // =========================================================
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Fade-in Hero
+    gsap.from('.hero-content > *', {
+      y: 40,
+      opacity: 0,
+      duration: 1,
+      stagger: 0.15,
+      ease: 'power3.out'
+    });
+
+    // Stagger reveal other grids
+    const staggerGrid = [
+      { trigger: '.reasons-grid', target: '.reason-card-wrap' },
+      { trigger: '.team-grid', target: '.team-card-wrap' }
+    ];
+
+    staggerGrid.forEach(grid => {
+      gsap.from(grid.target, {
+        y: 60,
+        opacity: 0,
+        duration: 1,
+        stagger: 0.15,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: grid.trigger,
+          start: 'top 75%',
+          toggleActions: 'play none none none'
+        }
+      });
+    });
+
+    // Desktop only pinning & stacking sequence
+    const mm = gsap.matchMedia();
+    mm.add("(min-width: 1025px)", () => {
+      // Pinning the left info block
+      ScrollTrigger.create({
+        trigger: '.mission-inner',
+        start: 'top 140px',
+        end: 'bottom bottom-=80px',
+        pin: '.mission-left',
+        pinSpacing: false
+      });
+
+      // Cards zoom/scale stacked effect
+      const cards = gsap.utils.toArray('.value-card-wrap');
+      cards.forEach((card, index) => {
+        gsap.fromTo(card.querySelector('.value-card'), 
+          { scale: 0.9, opacity: 0.4 },
+          { 
+            scale: 1, 
+            opacity: 1, 
+            ease: 'none',
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 85%',
+              end: 'top 50%',
+              scrub: true
+            }
+          }
+        );
+      });
+    });
+
+    // =========================================================
+    // INTERACTIVE 3D HOVER TILT EFFECTS (GSAP POWERED)
+    // =========================================================
+    if (window.matchMedia('(hover: hover)').matches) {
+      const cards3d = document.querySelectorAll('.card-3d');
+      
+      cards3d.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left - rect.width / 2;
+          const y = e.clientY - rect.top - rect.height / 2;
+          
+          const rotateX = -(y / (rect.height / 2)) * 10;
+          const rotateY = (x / (rect.width / 2)) * 10;
+          
+          gsap.to(card, {
+            rotateX: rotateX,
+            rotateY: rotateY,
+            scale: 1.025,
+            duration: 0.35,
+            ease: 'power2.out',
+            transformPerspective: 1000,
+            boxShadow: '0 20px 40px rgba(15, 23, 42, 0.08)'
+          });
+        });
+        
+        card.addEventListener('mouseleave', () => {
+          gsap.to(card, {
+            rotateX: 0,
+            rotateY: 0,
+            scale: 1,
+            duration: 0.6,
+            ease: 'power2.out',
+            boxShadow: 'none'
+          });
+        });
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Softoware Portfolio — Explore our featured case studies in custom web development, e-commerce systems, and performance marketing." />
+  <title>Portfolio | Softoware</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- CDNs: GSAP, ScrollTrigger, Lenis (Smooth Scroll) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* =========================================================
+       RESET & BASE DESIGN SYSTEM
+    ========================================================= */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg-white: #FFFFFF;
+      --bg-light: #F8FAFC;
+      --text-dark: #0F172A;
+      --text-muted: #64748B;
+      --text-light: #94A3B8;
+      --accent: #2563EB;
+      --accent-hover: #1D4ED8;
+      --accent-light: #BFDBFE;
+      --accent-xlight: #EFF6FF;
+      --border: #E2E8F0;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 24px;
+      --radius-xl: 32px;
+      --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
+      --shadow-md: 0 10px 30px rgba(15, 23, 42, 0.06);
+      --shadow-lg: 0 20px 50px rgba(37, 99, 235, 0.08);
+      --shadow-xl: 0 30px 80px rgba(37, 99, 235, 0.12);
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --font-head: 'Outfit', sans-serif;
+      --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    html.lenis {
+      height: auto;
+    }
+    .lenis.lenis-smooth {
+      scroll-behavior: auto !important;
+    }
+    .lenis.lenis-stopped {
+      overflow: hidden;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-white);
+      color: var(--text-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition);
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+      border-radius: var(--radius-md);
+    }
+
+    /* =========================================================
+       UTILITIES & MODERN STYLING
+    ========================================================= */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-xlight);
+      border: 1px solid var(--accent-light);
+      border-radius: 100px;
+      padding: 6px 16px;
+      margin-bottom: 20px;
+      font-family: var(--font-head);
+    }
+
+    .section-label-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: inline-block;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.7); }
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 700;
+      border-radius: 100px;
+      padding: 14px 32px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: var(--transition);
+      white-space: nowrap;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.15);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: -1;
+    }
+
+    .btn:hover::before {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent) 0%, #3B82F6 100%);
+      color: #fff;
+      box-shadow: 0 8px 30px rgba(37, 99, 235, 0.25);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 12px 40px rgba(37, 99, 235, 0.35);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* =========================================================
+       NAVBAR (GLASSMORPHIC)
+    ========================================================= */
+    #navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(255, 255, 255, 0.8);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+      transition: var(--transition);
+    }
+
+    #navbar.scrolled {
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+      border-bottom-color: rgba(226, 232, 240, 0.8);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-head);
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--accent) 0%, #4F46E5 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.25rem;
+      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+    }
+
+    .logo-text {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      letter-spacing: -0.03em;
+    }
+
+    .logo-text span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-links a {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      padding: 8px 18px;
+      border-radius: 8px;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--text-dark);
+      background: var(--bg-light);
+    }
+
+    .nav-links a.active {
+      color: var(--accent);
+      background: var(--accent-xlight);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .nav-cta {
+      font-size: 0.88rem;
+      padding: 10px 24px;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 44px;
+      height: 44px;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      border-radius: 10px;
+      gap: 6px;
+      transition: var(--transition);
+      z-index: 1100;
+    }
+
+    .hamburger:hover {
+      background: var(--bg-light);
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text-dark);
+      border-radius: 2px;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s, width 0.3s;
+    }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    /* Mobile Menu */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .mobile-menu.open {
+      display: flex;
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .mobile-menu a {
+      font-family: var(--font-head);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      padding: 12px 36px;
+      border-radius: 14px;
+      transition: var(--transition);
+      letter-spacing: -0.02em;
+    }
+
+    .mobile-menu a:hover, .mobile-menu a.active {
+      color: var(--accent);
+      background: var(--accent-xlight);
+      transform: scale(1.05);
+    }
+
+    /* =========================================================
+       PAGE HERO (3D GEOMETRIC WIREFRAME CANVAS)
+    ========================================================= */
+    .page-hero {
+      position: relative;
+      background: var(--bg-light);
+      padding: 180px 24px 100px;
+      text-align: center;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-canvas-container {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      opacity: 0.95;
+    }
+
+    #polyhedron-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .page-hero h1 {
+      font-family: var(--font-head);
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--text-dark);
+      margin-bottom: 20px;
+    }
+
+    .page-hero h1 span.gradient {
+      background: linear-gradient(135deg, var(--accent) 0%, #4F46E5 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .page-hero p {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* =========================================================
+       HORIZONTAL SCROLL PORTFOLIO (GSAP PINNED TRACK)
+    ========================================================= */
+    .portfolio-section {
+      background: #0B132B;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Desktop pinning container */
+    .horizontal-scroll-container {
+      position: relative;
+    }
+
+    .horizontal-track {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      padding: 0 80px;
+      height: 100vh;
+      width: max-content;
+      will-change: transform;
+    }
+
+    /* Portfolio Case Study Card */
+    .portfolio-card-wrap {
+      perspective: 1200px;
+      flex-shrink: 0;
+    }
+
+    .portfolio-card {
+      width: 680px;
+      height: 520px;
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.72) 0%, rgba(15, 23, 42, 0.85) 100%);
+      border: 1.5px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-xl);
+      padding: 48px;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      transform-style: preserve-3d;
+      will-change: transform;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .portfolio-card:hover {
+      border-color: rgba(37, 99, 235, 0.4);
+      box-shadow: 0 40px 100px rgba(37, 99, 235, 0.15);
+    }
+
+    /* Background image wrapper with parallax capability */
+    .card-bg-wrap {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      border-radius: var(--radius-xl);
+      pointer-events: none;
+    }
+
+    .card-bg-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.35;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+      transform: scale(1.05);
+    }
+
+    .portfolio-card:hover .card-bg-image {
+      transform: scale(1.1);
+      opacity: 0.65;
+    }
+
+    .card-top {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      transform: translateZ(30px);
+    }
+
+    .card-category {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.10em;
+      color: #fff;
+      background: var(--accent);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 6px 18px;
+      border-radius: 50px;
+      font-family: var(--font-head);
+      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.25);
+    }
+
+    .card-year {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.5);
+      font-weight: 700;
+    }
+
+    .card-bottom {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transform: translateZ(25px);
+    }
+
+    .card-title {
+      font-family: var(--font-head);
+      font-size: 2.5rem;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      color: #fff;
+    }
+
+    .card-desc {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.7;
+      max-width: 480px;
+      font-weight: 400;
+    }
+
+    .portfolio-card .btn-outline {
+      align-self: flex-start;
+      margin-top: 12px;
+      transform: translateZ(35px);
+    }
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+    #footer {
+      background: #0B1120;
+      color: #94A3B8;
+      padding: 100px 0 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      position: relative;
+      z-index: 10;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 60px;
+      padding-bottom: 60px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .footer-brand {
+      max-width: 320px;
+    }
+
+    .footer-brand p {
+      font-size: 0.95rem;
+      line-height: 1.75;
+      margin-top: 16px;
+      color: #64748B;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #94A3B8;
+      transition: var(--transition);
+    }
+
+    .social-link:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+      transform: translateY(-3px);
+    }
+
+    .social-link svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-head);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #fff;
+      margin-bottom: 24px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .footer-col ul li a {
+      font-size: 0.95rem;
+      color: #94A3B8;
+    }
+
+    .footer-col ul li a:hover {
+      color: #fff;
+      padding-left: 4px;
+    }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 40px;
+      font-size: 0.85rem;
+      color: #64748B;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-bottom-links a:hover {
+      color: #fff;
+    }
+
+    /* =========================================================
+       RESPONSIVE DESIGN & MOBILE OPTIMIZATION
+    ========================================================= */
+    @media (max-width: 1024px) {
+      .footer-top {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+      /* Disable horizontal scroll on mobile/tablet */
+      .horizontal-track {
+        flex-direction: column;
+        width: 100% !important;
+        height: auto !important;
+        padding: 80px 24px;
+        transform: none !important;
+        gap: 48px;
+      }
+      .portfolio-card {
+        width: 100%;
+        max-width: 600px;
+        height: 480px;
+        padding: 32px;
+      }
+      .card-title {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+      .footer-top {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page-hero {
+        padding: 140px 20px 80px;
+      }
+      .portfolio-card {
+        padding: 24px;
+        height: 440px;
+      }
+      .card-title {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ==========================================
+       HEADER / NAVIGATION
+  =========================================== -->
+  <header id="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-icon">S</div>
+        <span class="logo-text">Softoware<span>.</span></span>
+      </a>
+
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="index.html">Home</a>
+        <a href="portfolio.html" class="active">Portfolio</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="nav-right">
+        <a href="contact.html" class="btn btn-primary nav-cta">Start a Project</a>
+        <button class="hamburger" id="hamburger-btn" aria-label="Toggle Menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <nav class="mobile-menu" id="mobile-menu-overlay" aria-label="Mobile Navigation">
+      <a href="index.html">Home</a>
+      <a href="portfolio.html" class="active">Portfolio</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="btn btn-primary nav-cta" style="margin-top: 20px;">Start a Project</a>
+    </nav>
+  </header>
+
+  <!-- ==========================================
+       PAGE HERO (3D WIREFRAME POLYHEDRON)
+  =========================================== -->
+  <section class="page-hero">
+    <div class="hero-canvas-container">
+      <canvas id="polyhedron-canvas"></canvas>
+    </div>
+    <div class="hero-content">
+      <div class="section-label">
+        <span class="section-label-dot"></span>
+        Case Studies
+      </div>
+      <h1>Featured Production <span class="gradient">Work.</span></h1>
+      <p>Explore architectural design systems, distributed pipelines, and conversion strategies built to solve real engineering bottlenecks.</p>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       HORIZONTAL SCROLL SHOWCASE (GSAP PINNED)
+  =========================================== -->
+  <section class="portfolio-section">
+    <div class="horizontal-scroll-container">
+      <div class="horizontal-track">
+        
+        <!-- Case 1 -->
+        <div class="portfolio-card-wrap">
+          <div class="portfolio-card card-3d">
+            <div class="card-bg-wrap">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Apex Cloud Broker" class="card-bg-image" />
+            </div>
+            <div class="card-top">
+              <span class="card-category">Distributed Core</span>
+              <span class="card-year">2026</span>
+            </div>
+            <div class="card-bottom">
+              <h2 class="card-title">Apex Cloud Broker</h2>
+              <p class="card-desc">Architected a sub-100ms multi-region distributed system supporting 10M+ daily operations with elastic scalability.</p>
+              
+              <!-- Metrics -->
+              <div style="display: flex; gap: 24px; margin-top: 12px; transform: translateZ(20px);">
+                <div>
+                  <span style="font-size: 0.75rem; color: rgba(255,255,255,0.45); text-transform: uppercase; font-weight: 700;">Metric Result</span>
+                  <div style="font-size: 1.35rem; font-weight: 900; color: #10B981; margin-top: 4px;">+180% Speed</div>
+                </div>
+                <div style="width: 1px; background: rgba(255,255,255,0.15); height: 40px;"></div>
+                <div>
+                  <span style="font-size: 0.75rem; color: rgba(255,255,255,0.45); text-transform: uppercase; font-weight: 700;">Architecture</span>
+                  <div style="font-size: 1.35rem; font-weight: 900; color: #3B82F6; margin-top: 4px;">Multi-Region</div>
+                </div>
+              </div>
+
+              <a href="contact.html" class="btn btn-outline" style="margin-top: 20px;">Explore Scopes &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Case 2 -->
+        <div class="portfolio-card-wrap">
+          <div class="portfolio-card card-3d">
+            <div class="card-bg-wrap">
+              <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Cognitive AI Pipeline" class="card-bg-image" />
+            </div>
+            <div class="card-top">
+              <span class="card-category">Artificial Intelligence</span>
+              <span class="card-year">2026</span>
+            </div>
+            <div class="card-bottom">
+              <h2 class="card-title">Cognitive AI Pipeline</h2>
+              <p class="card-desc">Integrated semantic vector databases and LLM orchestration chains for fully automated corporate compliance workflows.</p>
+
+              <!-- Metrics -->
+              <div style="display: flex; gap: 24px; margin-top: 12px; transform: translateZ(20px);">
+                <div>
+                  <span style="font-size: 0.75rem; color: rgba(255,255,255,0.45); text-transform: uppercase; font-weight: 700;">Efficiency</span>
+                  <div style="font-size: 1.35rem; font-weight: 900; color: #10B981; margin-top: 4px;">95% Saved</div>
+                </div>
+                <div style="width: 1px; background: rgba(255,255,255,0.15); height: 40px;"></div>
+                <div>
+                  <span style="font-size: 0.75rem; color: rgba(255,255,255,0.45); text-transform: uppercase; font-weight: 700;">Automation</span>
+                  <div style="font-size: 1.35rem; font-weight: 900; color: #3B82F6; margin-top: 4px;">Compliance</div>
+                </div>
+              </div>
+
+              <a href="contact.html" class="btn btn-outline" style="margin-top: 20px;">Explore Scopes &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Case 3 -->
+        <div class="portfolio-card-wrap">
+          <div class="portfolio-card card-3d">
+            <div class="card-bg-wrap">
+              <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Nova FinTech Interface" class="card-bg-image" />
+            </div>
+            <div class="card-top">
+              <span class="card-category">UI/UX Systems</span>
+              <span class="card-year">2025</span>
+            </div>
+            <div class="card-bottom">
+              <h2 class="card-title">Nova FinTech Interface</h2>
+              <p class="card-desc">Built an ultra-responsive client management dashboard with GSAP WebGL interactions, boosting conversions by 40%.</p>
+
+              <!-- Metrics -->
+              <div style="display: flex; gap: 24px; margin-top: 12px; transform: translateZ(20px);">
+                <div>
+                  <span style="font-size: 0.75rem; color: rgba(255,255,255,0.45); text-transform: uppercase; font-weight: 700;">Retention</span>
+                  <div style="font-size: 1.35rem; font-weight: 900; color: #10B981; margin-top: 4px;">+40% Return</div>
+                </div>
+                <div style="width: 1px; background: rgba(255,255,255,0.15); height: 40px;"></div>
+                <div>
+                  <span style="font-size: 0.75rem; color: rgba(255,255,255,0.45); text-transform: uppercase; font-weight: 700;">Conversion</span>
+                  <div style="font-size: 1.35rem; font-weight: 900; color: #3B82F6; margin-top: 4px;">Optimized</div>
+                </div>
+              </div>
+
+              <a href="contact.html" class="btn btn-outline" style="margin-top: 20px;">Explore Scopes &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       FOOTER
+  =========================================== -->
+  <footer id="footer">
+    <div class="container footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">
+          <div class="logo-icon">S</div>
+          <span class="logo-text" style="color: #fff">Softoware<span>.</span></span>
+        </a>
+        <p>Consolidating world-class web engineering and performance customer acquisition under one team.</p>
+        <div class="social-links">
+          <a href="#" class="social-link"><i data-lucide="twitter"></i></a>
+          <a href="#" class="social-link"><i data-lucide="linkedin"></i></a>
+          <a href="#" class="social-link"><i data-lucide="github"></i></a>
+          <a href="#" class="social-link"><i data-lucide="dribbble"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Capabilities</h4>
+        <ul>
+          <li><a href="services.html">Web Development</a></li>
+          <li><a href="services.html">E-Commerce &amp; CMS</a></li>
+          <li><a href="services.html">Acquisition Marketing</a></li>
+          <li><a href="services.html">UI/UX Design</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Softoware</h4>
+        <ul>
+          <li><a href="about.html">About Our Agency</a></li>
+          <li><a href="portfolio.html">Featured Work</a></li>
+          <li><a href="contact.html">Careers</a></li>
+          <li><a href="contact.html">Book Call</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Get In Touch</h4>
+        <ul>
+          <li><a href="mailto:hello@softoware.com">hello@softoware.com</a></li>
+          <li><a href="tel:+14155550182">+1 (415) 555-0182</a></li>
+          <li><a href="#">San Francisco, CA</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>&copy; 2026 Softoware. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       JAVASCRIPT LOGIC
+  =========================================== -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // =========================================================
+    // LENIS SMOOTH SCROLL
+    // =========================================================
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smooth: true,
+      touchSmooth: false
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    // =========================================================
+    // MOBILE NAVIGATION
+    // =========================================================
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+
+    hamburgerBtn.addEventListener('click', () => {
+      const isOpen = hamburgerBtn.classList.toggle('open');
+      mobileMenuOverlay.classList.toggle('open', isOpen);
+      hamburgerBtn.setAttribute('aria-expanded', isOpen);
+      document.body.classList.toggle('menu-open', isOpen);
+    });
+
+    // =========================================================
+    // HEADER SCROLL STATE
+    // =========================================================
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // =========================================================
+    // HERO 3D SPINNING WIREFRAME POLYHEDRON (HTML5 CANVAS)
+    // =========================================================
+    const canvas = document.getElementById('polyhedron-canvas');
+    const ctx = canvas.getContext('2d');
+
+    let width, height;
+    function resizeCanvas() {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      width = canvas.width = rect.width;
+      height = canvas.height = rect.height;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    // Vertices of an Icosahedron (3D coordinates)
+    const tVal = (1.0 + Math.sqrt(5.0)) / 2.0;
+    const vertices = [
+      {x: -1, y:  tVal, z: 0},
+      {x:  1, y:  tVal, z: 0},
+      {x: -1, y: -tVal, z: 0},
+      {x:  1, y: -tVal, z: 0},
+      {x: 0, y: -1, z:  tVal},
+      {x: 0, y:  1, z:  tVal},
+      {x: 0, y: -1, z: -tVal},
+      {x: 0, y:  1, z: -tVal},
+      {x:  tVal, y: 0, z: -1},
+      {x:  tVal, y: 0, z:  1},
+      {x: -tVal, y: 0, z: -1},
+      {x: -tVal, y: 0, z:  1}
+    ];
+
+    // Normalize vertices and scale
+    const scaleFactor = Math.min(width, height) * 0.16;
+    vertices.forEach(v => {
+      const length = Math.sqrt(v.x * v.x + v.y * v.y + v.z * v.z);
+      v.x = (v.x / length) * scaleFactor;
+      v.y = (v.y / length) * scaleFactor;
+      v.z = (v.z / length) * scaleFactor;
+    });
+
+    // Unique edges connecting vertices
+    const edges = [];
+    for (let i = 0; i < vertices.length; i++) {
+      for (let j = i + 1; j < vertices.length; j++) {
+        const dx = vertices[i].x - vertices[j].x;
+        const dy = vertices[i].y - vertices[j].y;
+        const dz = vertices[i].z - vertices[j].z;
+        const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
+        // Icosahedron edge distance filter
+        if (dist < scaleFactor * 1.1) {
+          edges.push([i, j]);
+        }
+      }
+    }
+
+    let targetRotY = 0.005;
+    let targetRotX = 0.005;
+    let currentRotY = 0.002;
+    let currentRotX = 0.002;
+
+    if (window.matchMedia('(hover: hover)').matches) {
+      window.addEventListener('mousemove', (e) => {
+        targetRotY = (e.clientX / window.innerWidth) - 0.5;
+        targetRotX = (e.clientY / window.innerHeight) - 0.5;
+      });
+    }
+
+    let scrollRot = 0;
+    window.addEventListener('scroll', () => {
+      scrollRot = window.scrollY * 0.002;
+    });
+
+    function drawPolyhedron() {
+      ctx.clearRect(0, 0, width, height);
+
+      currentRotY += (targetRotY * 0.05 - currentRotY) * 0.05;
+      currentRotX += (targetRotX * 0.05 - currentRotX) * 0.05;
+
+      const angleY = currentRotY + 0.004 + scrollRot * 0.1;
+      const angleX = currentRotX + 0.003;
+
+      const cosY = Math.cos(angleY);
+      const sinY = Math.sin(angleY);
+      const cosX = Math.cos(angleX);
+      const sinX = Math.sin(angleX);
+
+      const cx = width * 0.5;
+      const cy = height * 0.5;
+      const perspective = 500;
+
+      const projected = [];
+
+      // Rotate and project vertices
+      vertices.forEach((v, index) => {
+        // Rotate Y Axis
+        let x1 = v.x * cosY - v.z * sinY;
+        let z1 = v.z * cosY + v.x * sinY;
+
+        // Rotate X Axis
+        let y2 = v.y * cosX - z1 * sinX;
+        let z2 = z1 * cosX + v.y * sinX;
+
+        // Save rotated points back
+        v.x = x1;
+        v.y = y2;
+        v.z = z2;
+
+        const scale = perspective / (perspective + z2);
+        projected.push({
+          x: cx + x1 * scale,
+          y: cy + y2 * scale,
+          z: z2,
+          radius: 4 * scale,
+          opacity: Math.max(0.1, (perspective - z2) / (perspective * 1.5))
+        });
+      });
+
+      // Draw edges
+      ctx.strokeStyle = 'rgba(37, 99, 235, 0.08)';
+      ctx.lineWidth = 1;
+      edges.forEach(edge => {
+        const p1 = projected[edge[0]];
+        const p2 = projected[edge[1]];
+
+        // Gradient edge opacity based on depth
+        ctx.strokeStyle = `rgba(37, 99, 235, ${Math.min(p1.opacity, p2.opacity) * 0.25})`;
+        ctx.beginPath();
+        ctx.moveTo(p1.x, p1.y);
+        ctx.lineTo(p2.x, p2.y);
+        ctx.stroke();
+      });
+
+      // Draw vertices nodes
+      projected.forEach(p => {
+        ctx.fillStyle = `rgba(37, 99, 235, ${p.opacity})`;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      requestAnimationFrame(drawPolyhedron);
+    }
+    drawPolyhedron();
+
+    // =========================================================
+    // GSAP + SCROLLTRIGGER ANIMATION MATRIX
+    // =========================================================
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Fade-in Hero
+    gsap.from('.hero-content > *', {
+      y: 40,
+      opacity: 0,
+      duration: 1,
+      stagger: 0.15,
+      ease: 'power3.out'
+    });
+
+    // Pinned Horizontal Scroll on Desktop
+    const mm = gsap.matchMedia();
+    mm.add("(min-width: 1025px)", () => {
+      const horizontalTween = gsap.to('.horizontal-track', {
+        x: () => -(document.querySelector('.horizontal-track').scrollWidth - window.innerWidth),
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.portfolio-section',
+          pin: true,
+          scrub: 1.2,
+          start: 'top top',
+          end: () => `+=${document.querySelector('.horizontal-track').scrollWidth - window.innerWidth}`,
+          invalidateOnRefresh: true
+        }
+      });
+
+      // Advanced 3D rotation linking to horizontal scroll timeline
+      const cards = gsap.utils.toArray('.portfolio-card');
+      cards.forEach(card => {
+        gsap.fromTo(card, 
+          { rotateY: 22, scale: 0.9, transformOrigin: 'center left' },
+          {
+            rotateY: -22,
+            scale: 0.9,
+            transformOrigin: 'center right',
+            ease: 'none',
+            scrollTrigger: {
+              trigger: card,
+              containerAnimation: horizontalTween,
+              start: 'left right',
+              end: 'right left',
+              scrub: true
+            }
+          }
+        );
+      });
+    });
+
+    // =========================================================
+    // INTERACTIVE 3D HOVER TILT EFFECTS (GSAP POWERED)
+    // =========================================================
+    if (window.matchMedia('(hover: hover)').matches) {
+      const cards3d = document.querySelectorAll('.card-3d');
+      
+      cards3d.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left - rect.width / 2;
+          const y = e.clientY - rect.top - rect.height / 2;
+          
+          const rotateX = -(y / (rect.height / 2)) * 8;
+          const rotateY = (x / (rect.width / 2)) * 8;
+          
+          gsap.to(card, {
+            rotateX: rotateX,
+            rotateY: rotateY,
+            scale: 1.02,
+            duration: 0.35,
+            ease: 'power2.out',
+            transformPerspective: 1200
+          });
+        });
+        
+        card.addEventListener('mouseleave', () => {
+          gsap.to(card, {
+            rotateX: 0,
+            rotateY: 0,
+            scale: 1,
+            duration: 0.6,
+            ease: 'power2.out'
+          });
+        });
+      });
+    }
+  </script>
+</body>
+</html>
